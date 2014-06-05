@@ -9,6 +9,8 @@
     <!--<script src="Scripts/Engine.js"></script>-->
     <script src="Scripts/button.js"></script>
     <script src="Scripts/spring.js"></script>
+    <script src="Scripts/flatButton.js"></script>
+
 
     <script>
         //test
@@ -24,8 +26,11 @@
         var springImage = ourSpring.image();
         var ourButton = new Button(150, 100, ourSpring, layerOne);
         var buttonImage = ourButton.image();
-
+        var ourFlatButton = new flatButton(200, 116, layerOne, false);
+        var ourFlatPressedButton = new flatButton(300, 127, layerOne, true);
         //layerOne.add(springImage);
+        layerOne.add(ourFlatButton.image());
+        layerOne.add(ourFlatPressedButton.image());
         layerOne.add(buttonImage);
         drawField.add(layerOne);
     </script>

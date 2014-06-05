@@ -6,8 +6,8 @@
             var imageObj = new Image();
             imageObj.src = '../resources/button.png';
             var innerImage = new Kinetic.Image({
-                x: this.posX,
-                y: this.posY,
+                x: button.posX,
+                y: button.posY,
                 image: imageObj,
             });
 
