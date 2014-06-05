@@ -1,4 +1,4 @@
-﻿function Button(x, y,spring) {
+﻿function Button(x, y, spring) {
     var button = {
         posX: x,
         posY: y,
@@ -11,8 +11,7 @@
                 image: imageObj,
             });
             innerImage.on('click', function (evt) {
-                console.log('you clicked me!')
-                spring.image().animation ( 'fit');
+                spring.image().animation('fit');
             });
             return innerImage;
         }
