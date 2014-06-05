@@ -17,7 +17,7 @@
                       0, 0, 101, 122,
                       //103, 0, 101, 122,
                     ],
-                    fit: [
+                    stretch: [
                       // x, y, width, height (3 frames)
                       //0, 2, 100, 60,
                       103, 0, 101, 122,
@@ -38,7 +38,7 @@
             var frameCount = 0;
 
             innerSpring.on('frameIndexChange', function (evt) {
-                if (innerSpring.animation() === 'fit' && ++frameCount > 3) {
+                if (innerSpring.animation() === 'stretch' && ++frameCount > 3) {
                     innerSpring.animation('idle');
                     frameCount = 0;
                 }

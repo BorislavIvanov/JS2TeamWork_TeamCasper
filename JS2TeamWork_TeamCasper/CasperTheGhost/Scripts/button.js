@@ -1,4 +1,4 @@
-﻿function Button(x, y, spring) {
+﻿function Button(x, y, spring, layer) {
     var button = {
         posX: x,
         posY: y,
@@ -10,11 +10,13 @@
                 y: this.posY,
                 image: imageObj,
             });
-            
+
             innerImage.on('mousedown', function (evt) {
                 imageObj.src = '../resources/button-mousedown.png';
                 setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 200);
-                spring.image().animation('fit');
+                layer.removeChildren();
+                layer.add(innerImage);
+                spring.image().animation('stretch');
             });
             innerImage.on('mouseover', function (evt) {
                 imageObj.src = '../resources/button-hover.png';

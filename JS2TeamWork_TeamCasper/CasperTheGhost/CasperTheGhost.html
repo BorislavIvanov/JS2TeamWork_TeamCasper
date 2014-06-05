@@ -22,13 +22,12 @@
 
         var ourSpring = new Spring(layerOne, 20, 20);
         var springImage = ourSpring.image();
-        var ourButton = new Button(150, 100, ourSpring);
+        var ourButton = new Button(150, 100, ourSpring, layerOne);
         var buttonImage = ourButton.image();
 
         //layerOne.add(springImage);
         layerOne.add(buttonImage);
         drawField.add(layerOne);
-
     </script>
 </body>
 </html>
