@@ -7,6 +7,8 @@ function Casper(x, y, layer) {
         posX: x,
         posY: y,
         direction: 'idle',
+        multi: 0,
+        speed:2,
         animationChange: false,
         multiplyer: -1,
         init: function () {
@@ -69,53 +71,32 @@ function Casper(x, y, layer) {
                 layer.add(blob);
                 blob.start();
                 
-                var amplitude = 150;
-                var period = 2000;
-                // in ms
-                var centerX = 400;
-
                 var anim = new Kinetic.Animation(function (frame) {
-
-                    var multi = 0;
-                    var curX = blob.getX();
-                    if (casper.direction == 'left') {
-                        multi = -1;
-                    }
-                    if (casper.direction == 'right') {
-                       multi = 1;
-                    }
-                    blob.setX((curX + (5*multi)));
-                    //blob.setX(amplitude * Math.sin(frame.time * 2 * Math.PI / period) + centerX);
-                    //console.log(blob.x);
+                    blob.setX((blob.getX() + (casper.speed*casper.multi)));
                 }, layer);
                 anim.start();
                 
                 blob.on('frameIndexChange', function (evt) {
-                    //blob.x = casper.posX;
-                    //blob.y = casper.posY;
                     
                     if (casper.animationChange) {
-                        //layer.clear();
-                        //layer.add(blob);
-                        //console.log(blob.x);
                         casper.animationChange = false;
                         blob.animation(casper.direction);
                     }
                 }, false);
             }
-            imageObj.src = 'Resources/GhostSprites.png';
+            imageObj.src = "../resources/GhostSprites.png";
         },
         move: function (newDirection) {
-            //this.posX += 50;
-            //this.posY += 50;
-            //console.log(this.posX);
-            
 
             this.direction = newDirection;
+            this.multi = 0;
+            if (newDirection == 'left') {
+                this.multi = -1;
+            }
+            if (newDirection == 'right') {
+                this.multi = 1;
+            }
             this.animationChange = true;
-            //var anim = new Kinetic.Animation(function (frame) {
-            //    hexagon.setX(amplitude * Math.sin(frame.time * 2 * Math.PI / period) + centerX);
-            //}, layer);
         }
     };
     casper.init();

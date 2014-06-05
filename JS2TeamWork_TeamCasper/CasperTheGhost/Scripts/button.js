@@ -1,4 +1,4 @@
-﻿function Button(x, y, spring) {
+﻿function Button(x, y, spring, layer) {
     var button = {
         posX: x,
         posY: y,
@@ -6,15 +6,17 @@
             var imageObj = new Image();
             imageObj.src = '../resources/button.png';
             var innerImage = new Kinetic.Image({
-                x: this.posX,
-                y: this.posY,
+                x: button.posX,
+                y: button.posY,
                 image: imageObj,
             });
-            
+
             innerImage.on('mousedown', function (evt) {
                 imageObj.src = '../resources/button-mousedown.png';
                 setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 200);
-                spring.image().animation('fit');
+                layer.removeChildren();
+                layer.add(innerImage);
+                spring.image().animation('stretch');
             });
             innerImage.on('mouseover', function (evt) {
                 imageObj.src = '../resources/button-hover.png';
