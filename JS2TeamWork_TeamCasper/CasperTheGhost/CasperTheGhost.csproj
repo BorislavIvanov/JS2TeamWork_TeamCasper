@@ -57,10 +57,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="casperTestPage.html" />
     <Content Include="CasperTheGhost.html" />
     <Content Include="Resources\button.png" />
+    <Content Include="Resources\GhostSprites.png" />
     <Content Include="Resources\spring.png" />
     <Content Include="Scripts\button.js" />
+    <Content Include="Scripts\CasperObject.js" />
     <Content Include="Scripts\Engine.js" />
     <Content Include="Scripts\kinetic-v5.1.0.min.js" />
     <Content Include="Scripts\spring.js" />
