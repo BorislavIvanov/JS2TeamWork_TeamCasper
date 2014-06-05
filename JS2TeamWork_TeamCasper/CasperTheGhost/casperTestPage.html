@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -14,7 +14,11 @@
             width : 800,
             height: 600
         });
-        var s = new Casper(200,200,stage);
+        var layer = new Kinetic.Layer();
+        var s = Casper(200, 200,layer);
+
+        stage.add(layer);
+
     </script>
     <button onclick="s.move('idle')">stay</button>
     <button onclick="s.move('left')">left</button>
