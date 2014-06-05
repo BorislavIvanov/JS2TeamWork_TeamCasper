@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Assembly Line</title>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <script src="Scripts/kinetic-v5.1.0.min.js"></script>
+    <script src="Scripts/AssemblyLine.js"></script>
+
+    <script>
+        //test
+        var drawField = new Kinetic.Stage({
+            container: 'canvas-container',
+            width: 800,
+            height: 600
+        });
+
+        var layerOne = new Kinetic.Layer();
+        
+        var newAssemblyLine = new AssemblyLine(layerOne, 30, 30, 15);
+
+        drawField.add(layerOne);
+    </script>
+</body>
+</html>

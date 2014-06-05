@@ -57,11 +57,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AssemblyLineTest.html" />
     <Content Include="casperTestPage.html" />
     <Content Include="CasperTheGhost.html" />
+    <Content Include="Resources\AssemblyLineSprite.png" />
+    <Content Include="Resources\button-hover.png" />
+    <Content Include="Resources\button-mousedown.png" />
     <Content Include="Resources\button.png" />
     <Content Include="Resources\GhostSprites.png" />
     <Content Include="Resources\spring.png" />
+    <Content Include="Scripts\AssemblyLine.js" />
     <Content Include="Scripts\button.js" />
     <Content Include="Scripts\CasperObject.js" />
     <Content Include="Scripts\Engine.js" />
