@@ -20,12 +20,15 @@
 
         var layerOne = new Kinetic.Layer();
 
-        var ourButton = new Button(150, 100);
-        var ourSpring = new Spring(20, 20, ourButton.image());
+        var ourSpring = new Spring(layerOne, 20, 20);
+        var springImage = ourSpring.image();
+        var ourButton = new Button(150, 100, ourSpring);
+        var buttonImage = ourButton.image();
 
-        layerOne.add(ourSpring.image());
-        layerOne.add(ourButton.image());
+        //layerOne.add(springImage);
+        layerOne.add(buttonImage);
         drawField.add(layerOne);
+
     </script>
 </body>
 </html>

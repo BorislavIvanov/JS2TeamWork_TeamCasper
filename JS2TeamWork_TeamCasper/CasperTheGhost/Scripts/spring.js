@@ -1,4 +1,4 @@
-﻿function Spring(x, y, button) {
+﻿function Spring(layer,x, y) {
     var spring = {
         posX: x,
         posY: y,
@@ -15,6 +15,7 @@
                     idle: [
                       // x, y, width, height (4 frames)
                       0, 0, 101, 122,
+                      //103, 0, 101, 122,
                     ],
                     fit: [
                       // x, y, width, height (3 frames)
@@ -28,6 +29,9 @@
                 frameIndex: 0
             });
 
+            layer.add(innerSpring);
+
+            //stage.add(layer);
             // start sprite animation
             innerSpring.start();
 
@@ -39,10 +43,6 @@
                     frameCount = 0;
                 }
             });
-
-            button.addEventListener('click', function () {
-                innerSpring.animation('fit');
-            }, false);
             return innerSpring;
         }
     }
