@@ -16,6 +16,6 @@ var rect = new Kinetic.Rect({
     height: 93
 });
 
-layer.add(rect);
+layerOne.add(rect);
 drawField.add(layerOne);
 //TEST
