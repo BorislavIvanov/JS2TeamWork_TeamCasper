@@ -58,8 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CasperTheGhost.html" />
+    <Content Include="Resources\button.png" />
+    <Content Include="Resources\spring.png" />
+    <Content Include="Scripts\button.js" />
     <Content Include="Scripts\Engine.js" />
     <Content Include="Scripts\kinetic-v5.1.0.min.js" />
+    <Content Include="Scripts\spring.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +77,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -6,6 +6,26 @@
 <body>
     <div id="canvas-container"></div>
     <script src="Scripts/kinetic-v5.1.0.min.js"></script>
-    <script src="Scripts/Engine.js"></script>
+    <!--<script src="Scripts/Engine.js"></script>-->
+    <script src="Scripts/button.js"></script>
+    <script src="Scripts/spring.js"></script>
+
+    <script>
+        //test
+        var drawField = new Kinetic.Stage({
+            container: 'canvas-container',
+            width: 800,
+            height: 600
+        });
+
+        var layerOne = new Kinetic.Layer();
+
+        var ourButton = new Button(150, 100);
+        var ourSpring = new Spring(20, 20, ourButton.image());
+
+        layerOne.add(ourSpring.image());
+        layerOne.add(ourButton.image());
+        drawField.add(layerOne);
+    </script>
 </body>
 </html>
