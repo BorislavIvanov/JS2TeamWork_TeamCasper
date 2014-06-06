@@ -18,12 +18,31 @@
             imageObj.src = '../resources/button.png';
 
             function checkForEvents(buttonImage) {
-                buttonImage.on('mousedown', function (evt) {
+                buttonImage.on('click', function (evt) {
+                    var onSpring;
+                    //for (var i = 0; i < s.inCollision.length; i++) {
+                    //    console.log(s.inCollision[i].id);
+                    //}
+                    for (var elementIndex in s.inCollision) {
+                        var test = s.inCollision[elementIndex].getId();
+                        if (test) {
+                            if (test == spring.image.getId()) {
+                                onSpring = true;
+                            }
+                        }
+                    }
+                    if (onSpring) {
+                        jump(1000);
+                    }
                     imageObj.src = '../resources/button-mousedown.png';
                     setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 200);
                     //layer.removeChildren();
                     //layer.add(buttonImage);
                     spring.image.animation('stretch');
+
+
+
+
                     //spring.getImage().start();
                 });
                 buttonImage.on('mouseover', function (evt) {

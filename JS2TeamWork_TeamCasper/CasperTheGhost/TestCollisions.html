@@ -11,7 +11,7 @@
     <script src="Scripts/Spring.js"></script>
     <script src="Scripts/button.js"></script>
     <script src="Scripts/Level.js"></script>
-
+    <script src="Scripts/Engine.js"></script>
 
     <script>
         var stage = new Kinetic.Stage({
@@ -27,14 +27,14 @@
             y: 280,
             width: 20,
             height: 210,
-            fill: 'transparent'
+            fill: 'orange'
         })
         var rect1 = new Kinetic.Rect({
             x: 0,
             y: 416,
             width: 410,
             height: 20,
-            fill: 'transparent'
+            fill: 'orange'
         })
 
         var levelOne = new Level(1);
@@ -54,8 +54,8 @@
         }
         backgroundImage.src = "../Resources/backgroundLavel1Night.png"
         levelOne.layers.push(backgroundLayer);
-        var ourSpring = new Spring(417, 270, layerOne, stage);
-        var ourSpringImage = ourSpring.image.rotate(10);
+        var ourSpring = new Spring(417, 280, layerOne, stage,'spring1');
+        var ourSpringImage = ourSpring.image.rotate(0);
         var ourButton = new Button(550, 450, layerOne, stage, ourSpring);
         //layerOne.add(ourButton);
         layerOne.add(rect);
@@ -75,30 +75,43 @@
         console.log('SpringHeight ' + ourSpringImage.getHeight());
         console.log('name ' + ourSpringImage.getName());
 
-        setInterval(
-            function () {
-                for (var i = 0; i < collisionObjects.length; i++) {
-                    //if ((s.posY+100)>496&&(s.posY+100<510)) {
-                    //    console.log('casperY+100' + (s.posY+100));
-                    //    console.log('springY' + collisionObjects[i].getY());
-                    //}
-                    if (checkCollide(s.posX + 100, s.posY + 50, collisionObjects[i])) {
-                        s.speed = 0;
-                        s.posX = rect.getX() - 100;
-                    }
-                    else {
-                        s.speed = 2;
-                    }
-                    if (checkCollide(s.posX + 50, s.posY + 100, collisionObjects[i])) {
-                        gravity = 0;
-                        s.posY-=2;
-                    }
-                    else {
-                            gravity = 2;
-                    }
-                }
-            }, 5);
+        //setInterval(
 
+        function goBabyGo() {
+            var inCollision = [];
+            for (var i = 0; i < collisionObjects.length; i++) {
+                //if ((s.posY+100)>496&&(s.posY+100<510)) {
+                //    console.log('casperY+100' + (s.posY+100));
+                //    console.log('springY' + collisionObjects[i].getY());
+                //}
+                var casperX = s.image.getX();
+                var casperY = s.image.getY();
+                if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
+                    s.speed = 0;
+                    s.image.setX(collisionObjects[i].getX() - 100);
+                    inCollision.push(collisionObjects[i]);
+                } else {
+                    s.speed = 2;
+                }
+
+                if (checkCollide(casperX + 50, casperY + 100, collisionObjects[i])) {
+                    
+
+                    if (collisionObjects[i].getName() == 'spring') {
+                        s.image.setY(collisionObjects[i].getY() - 30);
+                    } else {
+                        s.image.setY(collisionObjects[i].getY() - 100);
+                    }
+
+                    gravity = 0;
+                    inCollision.push(collisionObjects[i]);
+                } else {
+                    gravity = 2;
+                }
+            }
+            s.inCollision = inCollision;
+            //}, 20);
+        }
     </script>
     <button onclick="s.move('idle')">stay</button>
     <button onclick="s.move('left')">left</button>

@@ -1,21 +1,26 @@
-﻿//TEST
-var drawField = new Kinetic.Stage({
-    container: 'canvas-container',
-    width: 800,
-    height: 600
-});
+﻿////TEST
+//var drawField = new Kinetic.Stage({
+//    container: 'canvas-container',
+//    width: 800,
+//    height: 600
+//});
 
-var layerOne = new Kinetic.Layer();
+//var layerOne = new Kinetic.Layer();
 
-var rect = new Kinetic.Rect({
-    fill: 'yellowgreen',
-    stroke: '#CCCCCC',
-    x: 250,
-    y: 350,
-    width: 57,
-    height: 93
-});
+//var rect = new Kinetic.Rect({
+//    fill: 'yellowgreen',
+//    stroke: '#CCCCCC',
+//    x: 250,
+//    y: 350,
+//    width: 57,
+//    height: 93
+//});
 
-layerOne.add(rect);
-drawField.add(layerOne);
-//TEST
+//layerOne.add(rect);
+//drawField.add(layerOne);
+////TEST
+
+function jump(time) {
+    gravity = -150;
+    setTimeout(function (){gravity = 2}, time);
+}

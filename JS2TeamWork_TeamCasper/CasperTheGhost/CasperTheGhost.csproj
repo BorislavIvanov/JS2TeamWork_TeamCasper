@@ -69,9 +69,13 @@
     <Content Include="Scripts\AssemblyLine.js" />
     <Content Include="Scripts\button.js" />
     <Content Include="Scripts\CasperObject.js" />
+    <Content Include="Scripts\Collision.js" />
     <Content Include="Scripts\Engine.js" />
+    <Content Include="Scripts\flatButton.js" />
     <Content Include="Scripts\kinetic-v5.1.0.min.js" />
+    <Content Include="Scripts\Level.js" />
     <Content Include="Scripts\spring.js" />
+    <Content Include="TestCollisions.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

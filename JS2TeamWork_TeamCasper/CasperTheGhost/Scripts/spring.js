@@ -1,7 +1,8 @@
 ﻿
 
-function Spring(x, y, layer, stage) {
+function Spring(x, y, layer, stage, id) {
     var spring = {
+        
         posX: x,
         posY: y,
         width: 101,
@@ -9,13 +10,13 @@ function Spring(x, y, layer, stage) {
         image: (function (x, y) {
             var imageObj = new Image();
             imageObj.src = '../resources/spring.png';
-
             var innerSpring = new Kinetic.Sprite({
+                id: id,
                 x: x,
                 y: y + 82,
                 width: 101,
                 height: 57,
-                name: 'spring',
+                name:'spring',
                 image: imageObj,
                 animation: 'idle',
                 animations: {
@@ -49,12 +50,12 @@ function Spring(x, y, layer, stage) {
 
                 if (innerSpring.animation() === 'stretch') {
                     //spring.height += 40;
-                    if (frameCount===0) {
-                        gravity = -150;
-                    }
-                    if (frameCount===1) {
-                        gravity = 2;
-                    }
+                    //if (frameCount===0) {
+                    //    gravity = -150;
+                    //}
+                    //if (frameCount===1) {
+                    //    gravity = 2;
+                    //}
                     //spring.posY -= 40;
                     if (++frameCount > 3) {
                         innerSpring.animation('idle');
