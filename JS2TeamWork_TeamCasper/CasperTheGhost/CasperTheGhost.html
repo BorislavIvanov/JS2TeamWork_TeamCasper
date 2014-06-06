@@ -20,19 +20,18 @@
             height: 600
         });
 
+
         var layerOne = new Kinetic.Layer();
 
         var ourSpring = new Spring(layerOne, 20, 20);
-        var springImage = ourSpring.image();
-        var ourButton = new Button(150, 100, ourSpring, layerOne);
-        var buttonImage = ourButton.image();
-        var ourFlatButton = new flatButton(200, 116, layerOne, false);
-        var ourFlatPressedButton = new flatButton(300, 127, layerOne, true);
-        //layerOne.add(springImage);
-        layerOne.add(ourFlatButton.image());
-        layerOne.add(ourFlatPressedButton.image());
-        layerOne.add(buttonImage);
+        layerOne.add(ourSpring.getImage());
         drawField.add(layerOne);
+        var ourButton = new Button(150, 100, layerOne, drawField, ourSpring);
+
+        var layerTwo = new Kinetic.Layer();
+
+        var ourFlatButton = new flatButton(200, 116, layerTwo, drawField, false);
+        var ourFlatPressedButton = new flatButton(300, 127, layerTwo, drawField, true);
     </script>
 </body>
 </html>
