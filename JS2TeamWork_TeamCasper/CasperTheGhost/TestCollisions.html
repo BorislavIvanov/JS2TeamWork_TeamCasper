@@ -25,7 +25,15 @@
             height: 400,
             fill: 'orange'
         })
+        var rect1 = new Kinetic.Rect({
+            x: 20,
+            y: 350,
+            width: 500,
+            height: 10,
+            fill: 'orange'
+        })
         layer.add(rect);
+        layer.add(rect1);
         stage.add(layer);
 
         //while (true) {
@@ -34,12 +42,23 @@
         //    }
         //    setTimeout(function () { },20);
         //}
-
+        gravity = 2;
+        var collisionObjects = [];
+        collisionObjects.push(rect);
+        collisionObjects.push(rect1);
         setInterval(
             function () {
-                if (checkCollide(s.posX + 100, s.posY + 50, rect)) {
-                    s.speed = 0;
-                    s.posX = rect.getX() - 100;
+                for (var i = 0; i < collisionObjects.length; i++) {
+                    if (checkCollide(s.posX + 100, s.posY + 50, collisionObjects[i])) {
+                        s.speed = 0;
+                        s.posX = rect.getX() - 100;
+                    }
+                    if (checkCollide(s.posX + 50, s.posY + 100, collisionObjects[i])) {
+                        gravity = 0;
+                    }
+                    else {
+                        gravity = 5;
+                    }
                 }
             }, 10);
 

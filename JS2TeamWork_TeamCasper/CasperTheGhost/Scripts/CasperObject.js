@@ -74,6 +74,7 @@ function Casper(x, y, layer) {
                 
                 var anim = new Kinetic.Animation(function (frame) {
                     blob.setX(casper.posX + (casper.speed * casper.multi));
+                    blob.setY(casper.posY + gravity);
                     casper.posX = blob.getX();
                     casper.posY = blob.getY();
                 }, layer);
