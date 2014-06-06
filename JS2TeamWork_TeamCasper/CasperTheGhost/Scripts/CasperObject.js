@@ -2,7 +2,7 @@
  * Created by micro3x on 04.06.14.
  */
 
-function Casper(x, y, layer) {
+function Casper(x, y, layer,stage) {
     var casper = {
         posX: x,
         posY: y,
@@ -70,6 +70,7 @@ function Casper(x, y, layer) {
                     frameIndex: 0
                 });
                 layer.add(blob);
+                stage.add(layer);
                 blob.start();
                 
                 var anim = new Kinetic.Animation(function (frame) {

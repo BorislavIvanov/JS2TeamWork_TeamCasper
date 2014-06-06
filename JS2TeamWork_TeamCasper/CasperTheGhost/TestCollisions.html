@@ -8,7 +8,9 @@
     <script src="Scripts/kinetic-v5.1.0.min.js"></script>
     <script src="Scripts/CasperObject.js"></script>
     <script src="Scripts/Collision.js"></script>
-    <script src="Scripts/jquery-1.11.1.min.js"></script>
+    <script src="Scripts/Spring.js"></script>
+    <script src="Scripts/button.js"></script>
+
 
     <script>
         var stage = new Kinetic.Stage({
@@ -16,8 +18,9 @@
             width: 800,
             height: 600
         });
-        var layer = new Kinetic.Layer();
-        var s = new Casper(200, 200, layer);
+        var layerOne = new Kinetic.Layer();
+        var layerTwo = new Kinetic.Layer();
+        var s = new Casper(200, 200, layerTwo, stage);
         var rect = new Kinetic.Rect({
             x: 600,
             y: 150,
@@ -28,30 +31,50 @@
         var rect1 = new Kinetic.Rect({
             x: 20,
             y: 350,
-            width: 500,
-            height: 10,
+            width: 450,
+            height: 20,
             fill: 'orange'
         })
-        layer.add(rect);
-        layer.add(rect1);
-        stage.add(layer);
+
+        var ourSpring = new Spring(500, 400, layerOne, stage);
+        var ourSpringImage = ourSpring.image;
+        var ourButton = new Button(650, 550, layerOne, stage, ourSpring);
+        //layerOne.add(ourButton);
+        layerOne.add(rect);
+        layerOne.add(rect1);
+        //layerOne.add(ourSpring);
+        //stage.add(layerOne);
+        //stage.add(layerTwo);
 
         var gravity = 2;
         var collisionObjects = [];
         collisionObjects.push(rect);
         collisionObjects.push(rect1);
+        collisionObjects.push(ourSpringImage);
+        console.log('SpringY ' + ourSpringImage.getY());
+        console.log('SpringHeight ' + ourSpringImage.getHeight());
+        console.log('name ' + ourSpringImage.getName());
+
         setInterval(
             function () {
                 for (var i = 0; i < collisionObjects.length; i++) {
+                    //if ((s.posY+100)>496&&(s.posY+100<510)) {
+                    //    console.log('casperY+100' + (s.posY+100));
+                    //    console.log('springY' + collisionObjects[i].getY());
+                    //}
                     if (checkCollide(s.posX + 100, s.posY + 50, collisionObjects[i])) {
                         s.speed = 0;
                         s.posX = rect.getX() - 100;
                     }
+                    else {
+                        s.speed = 2;
+                    }
                     if (checkCollide(s.posX + 50, s.posY + 100, collisionObjects[i])) {
                         gravity = 0;
+                        s.posY-=2;
                     }
                     else {
-                        gravity = 2;
+                            gravity = 2;
                     }
                 }
             }, 10);
