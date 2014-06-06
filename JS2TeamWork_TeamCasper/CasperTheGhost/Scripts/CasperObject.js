@@ -19,6 +19,7 @@ function Casper(x, y, layer) {
                 var blob = new Kinetic.Sprite({
                     x: casper.posX,
                     y: casper.posY,
+                    //fill:'black',
                     image: imageObj,
                     animation: casper.direction,
                     animations: {
@@ -72,12 +73,14 @@ function Casper(x, y, layer) {
                 blob.start();
                 
                 var anim = new Kinetic.Animation(function (frame) {
-                    blob.setX((blob.getX() + (casper.speed*casper.multi)));
+                    blob.setX(casper.posX + (casper.speed * casper.multi));
+                    casper.posX = blob.getX();
+                    casper.posY = blob.getY();
                 }, layer);
                 anim.start();
                 
                 blob.on('frameIndexChange', function (evt) {
-                    
+                   
                     if (casper.animationChange) {
                         casper.animationChange = false;
                         blob.animation(casper.direction);
@@ -90,6 +93,7 @@ function Casper(x, y, layer) {
 
             this.direction = newDirection;
             this.multi = 0;
+            this.speed = 2;
             if (newDirection == 'left') {
                 this.multi = -1;
             }

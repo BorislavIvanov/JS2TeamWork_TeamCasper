@@ -21,9 +21,10 @@
                 buttonImage.on('mousedown', function (evt) {
                     imageObj.src = '../resources/button-mousedown.png';
                     setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 200);
-                    layer.removeChildren();
-                    layer.add(buttonImage);
-                    spring.getImage().animation('stretch');
+                    //layer.removeChildren();
+                    //layer.add(buttonImage);
+                    spring.image.animation('stretch');
+                    //spring.getImage().start();
                 });
                 buttonImage.on('mouseover', function (evt) {
                     imageObj.src = '../resources/button-hover.png';

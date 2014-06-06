@@ -23,9 +23,11 @@
 
         var layerOne = new Kinetic.Layer();
 
-        var ourSpring = new Spring(layerOne, 20, 20);
-        layerOne.add(ourSpring.getImage());
-        drawField.add(layerOne);
+        var ourSpring = new Spring(20, 20, layerOne, drawField);
+        //ourSpring.image.setX(340);
+        //ourSpring.image.rotate(90);
+        //layerOne.add(ourSpring.getImage());
+        //drawField.add(layerOne);
         var ourButton = new Button(150, 100, layerOne, drawField, ourSpring);
 
         var layerTwo = new Kinetic.Layer();

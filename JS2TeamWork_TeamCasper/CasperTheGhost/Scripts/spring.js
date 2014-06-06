@@ -1,14 +1,16 @@
-﻿function Spring(layer,x, y) {
+﻿function Spring(x, y, layer, stage) {
     var spring = {
         posX: x,
-        posY: y,
-        getImage: function () {
+        posY: y-82,
+        width: 100,
+        height: 40,
+        image: (function (x, y) {
             var imageObj = new Image();
             imageObj.src = '../resources/spring.png';
 
             var innerSpring = new Kinetic.Sprite({
-                x: this.posX,
-                y: this.posY,
+                x: x,
+                y: y,
                 image: imageObj,
                 animation: 'idle',
                 animations: {
@@ -25,11 +27,13 @@
                       311, 0, 101, 122,
                     ]
                 },
-                frameRate: 20,
+                frameRate: 1,
                 frameIndex: 0
             });
 
             layer.add(innerSpring);
+            stage.add(layer);
+
 
             //stage.add(layer);
             // start sprite animation
@@ -38,13 +42,20 @@
             var frameCount = 0;
 
             innerSpring.on('frameIndexChange', function (evt) {
-                if (innerSpring.animation() === 'stretch' && ++frameCount > 3) {
-                    innerSpring.animation('idle');
-                    frameCount = 0;
+                
+                if (innerSpring.animation() === 'stretch') {
+                    spring.height += 40;
+                    spring.posY -= 40;
+                    if (++frameCount>3) {
+                        innerSpring.animation('idle');
+                        frameCount = 0;
+                        spring.posY = y - 82;
+                        spring.height = 40;
+                    }
                 }
-            });
+            }, false);
             return innerSpring;
-        }
+        })(x, y)
     }
     return spring;
 }

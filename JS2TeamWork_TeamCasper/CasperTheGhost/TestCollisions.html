@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <script src="Scripts/kinetic-v5.1.0.min.js"></script>
+    <script src="Scripts/CasperObject.js"></script>
+    <script src="Scripts/Collision.js"></script>
+    <script src="Scripts/jquery-1.11.1.min.js"></script>
+
+    <script>
+        var stage = new Kinetic.Stage({
+            container: 'canvas-container',
+            width: 800,
+            height: 600
+        });
+        var layer = new Kinetic.Layer();
+        var s = new Casper(200, 200, layer);
+        var rect = new Kinetic.Rect({
+            x: 600,
+            y: 150,
+            width: 100,
+            height: 400,
+            fill: 'orange'
+        })
+        layer.add(rect);
+        stage.add(layer);
+
+        //while (true) {
+        //    if (CheckForCollide(s, rect)) {
+        //        s.direction = 'idle';
+        //    }
+        //    setTimeout(function () { },20);
+        //}
+
+        setInterval(
+            function () {
+                if (checkCollide(s.posX + 100, s.posY + 50, rect)) {
+                    s.speed = 0;
+                    s.posX = rect.getX() - 100;
+                }
+            }, 10);
+
+    </script>
+    <button onclick="s.move('idle')">stay</button>
+    <button onclick="s.move('left')">left</button>
+    <button onclick="s.move('right')">right</button>
+    <button onclick="(function(){s.speed=-5})()">Reverse turbo</button>
+</body>
+</html>
