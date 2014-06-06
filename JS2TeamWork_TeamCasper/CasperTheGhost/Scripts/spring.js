@@ -2,7 +2,7 @@
     var spring = {
         posX: x,
         posY: y,
-        image: function () {
+        getImage: function () {
             var imageObj = new Image();
             imageObj.src = '../resources/spring.png';
 
@@ -20,9 +20,9 @@
                     stretch: [
                       // x, y, width, height (3 frames)
                       //0, 2, 100, 60,
-                      103, 0, 101, 122,
-                      206, 0, 101, 122,
-                      310, 0, 101, 122,
+                      104, 0, 101, 122,
+                      207, 0, 101, 122,
+                      311, 0, 101, 122,
                     ]
                 },
                 frameRate: 20,
