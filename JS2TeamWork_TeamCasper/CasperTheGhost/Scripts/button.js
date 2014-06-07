@@ -18,7 +18,7 @@
             imageObj.src = '../resources/button.png';
 
             function checkForEvents(buttonImage) {
-                buttonImage.on('click', function (evt) {
+                buttonImage.on('mousedown', function (evt) {
                     var onSpring;
                     //for (var i = 0; i < s.inCollision.length; i++) {
                     //    console.log(s.inCollision[i].id);
