@@ -12,7 +12,7 @@
     <script src="Scripts/button.js"></script>
     <script src="Scripts/Level.js"></script>
     <script src="Scripts/Engine.js"></script>
-
+    <script src="Scripts/handle.js"></script>
     <script>
         var stage = new Kinetic.Stage({
             container: 'canvas-container',
@@ -36,6 +36,27 @@
             height: 20,
             fill: 'orange'
         })
+        var beamImage = new Image();
+        var corpusImage = new Image();
+        var beamLevel1 = new Kinetic.Image({
+            x: 232,
+            y:-64,
+            image: beamImage,
+            width:36,
+            height:480,
+
+        })
+ 
+        var corpusLevel1 = new Kinetic.Image({
+            x: 223,
+            y: 0,
+            image: corpusImage,
+            width: 50,
+            height: 27,
+
+        })
+        beamImage.src = "../Resources/beamLevel1.png"
+        corpusImage.src = "../Resources/korpus.png"
 
         var levelOne = new Level(1);
         var backgroundLayer = new Kinetic.Layer();
@@ -54,12 +75,17 @@
         }
         backgroundImage.src = "../Resources/backgroundLavel1Night.png"
         levelOne.layers.push(backgroundLayer);
-        var ourSpring = new Spring(417, 280, layerOne, stage,'spring1');
-        var ourSpringImage = ourSpring.image.rotate(0);
-        var ourButton = new Button(550, 450, layerOne, stage, ourSpring);
+        
+        var ourSpring = new Spring(417, 280, layerOne, stage, 'spring1');
+        //var ourSpringImage = ourSpring.image.rotate(0);
+        var ourButton = new Button(550, 450, layerTwo, stage, ourSpring);
+        //var ourHandle = new Handle(0, 30, layerOne, stage, 'handle');
+        //var ourButtonHandle = new Button(150, 150, layerTwo, stage, ourHandle);
         //layerOne.add(ourButton);
         layerOne.add(rect);
         layerOne.add(rect1);
+        layerOne.add(beamLevel1);
+        layerTwo.add(corpusLevel1);
         //layerOne.add(ourSpring);
         //stage.add(layerOne);
         //stage.add(layerTwo);
@@ -70,6 +96,8 @@
         var collisionObjects = [];
         collisionObjects.push(rect);
         collisionObjects.push(rect1);
+        collisionObjects.push(beamLevel1);
+        collisionObjects.push(corpusLevel1);
         collisionObjects.push(ourSpringImage);
         console.log('SpringY ' + ourSpringImage.getY());
         console.log('SpringHeight ' + ourSpringImage.getHeight());
@@ -86,7 +114,7 @@
                 //}
                 var casperX = s.image.getX();
                 var casperY = s.image.getY();
-                if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
+                if (checkCollide(casperX + 50, casperY + 50, collisionObjects[i])) {
                     s.speed = 0;
                     s.image.setX(collisionObjects[i].getX() - 100);
                     inCollision.push(collisionObjects[i]);
@@ -94,7 +122,7 @@
                     s.speed = 2;
                 }
 
-                if (checkCollide(casperX + 50, casperY + 100, collisionObjects[i])) {
+                if (checkCollide(casperX + 10, casperY + 100, collisionObjects[i])) {
                     
 
                     if (collisionObjects[i].getName() == 'spring') {
