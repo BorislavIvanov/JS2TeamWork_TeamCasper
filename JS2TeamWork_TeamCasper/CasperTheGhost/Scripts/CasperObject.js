@@ -15,11 +15,9 @@ function Casper(x, y, layer, stage) {
         image: (function (x, y) {
             var imageObj = new Image();
             imageObj.src = "../resources/GhostSprites.png";
-            //imageObj.onload = animate();
             var blob = new Kinetic.Sprite({
                 x: x,
                 y: y,
-                //fill:'black',
                 image: imageObj,
                 animation: 'idle',
                 animations: {
@@ -77,9 +75,6 @@ function Casper(x, y, layer, stage) {
                 blob.setX(blob.getX() + (casper.speed * casper.multi));
                 blob.setY(blob.getY() +  gravity);
                 goBabyGo();
-                //casper.posX = blob.getX();
-                //casper.posY = blob.getY();
-                
             }, layer);
             anim.start();
 
@@ -105,6 +100,5 @@ function Casper(x, y, layer, stage) {
             this.animationChange = true;
         }
     };
-    //casper.init();
     return casper;
 }

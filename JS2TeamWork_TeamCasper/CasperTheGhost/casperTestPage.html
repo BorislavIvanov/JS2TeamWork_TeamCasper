@@ -15,15 +15,15 @@
             height: 600
         });
         var layer = new Kinetic.Layer();
-        var s = Casper(200, 200,layer);
+        var casper = Casper(200, 200,layer);
 
         stage.add(layer);
 
     </script>
-    <button onclick="s.move('idle')">stay</button>
-    <button onclick="s.move('left')">left</button>
-    <button onclick="s.move('right')">right</button>
-    <button onclick="(function(){s.speed=-5})()">Reverse turbo</button>
+    <button onclick=" casper.move('idle')">stay</button>
+    <button onclick=" casper.move('left')">left</button>
+    <button onclick=" casper.move('right')">right</button>
+    <button onclick="(function(){casper.speed=-5})()">Reverse turbo</button>
 
 </body>
 </html>

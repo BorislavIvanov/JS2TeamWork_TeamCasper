@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+    <body>
+        <div id="canvas-container"></div>
+        <script src="Scripts/jquery-1.11.1.min.js"></script>
+        <script src="Scripts/kinetic-v5.1.0.min.js"></script>
+        <script src="Scripts/Levels.js"></script>
+        <script src="Scripts/Engine.js"></script>
+        <!--tuk shte e Menuto koeto shte vika Game loader-->
+        <script src="Scripts/GameLoader.js"></script>
+        <script>
+            var stage = new Kinetic.Stage({
+                container: 'canvas-container',
+                width: 800,
+                height: 600
+            });
+            //tuva nqma da go ima
+            loadLevel(1);
+        </script>
+        <button onclick=" casper.move('idle')">stay</button>
+        <button onclick=" casper.move('left')">left</button>
+        <button onclick=" casper.move('right')">right</button>
+        <button onclick="(function(){casper.speed=-5})()">Reverse turbo</button>
+    </body>
+</html>

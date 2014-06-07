@@ -67,7 +67,10 @@
     <Content Include="Resources\button-hover.png" />
     <Content Include="Resources\button-mousedown.png" />
     <Content Include="Resources\button.png" />
+<<<<<<< HEAD
+=======
     <Content Include="Resources\ControlLever.png" />
+>>>>>>> 830db32cce25d4ccd70118799c585be4a381c8f5
     <Content Include="Resources\flatButton.png" />
     <Content Include="Resources\GhostSprites.png" />
     <Content Include="Resources\spring.png" />

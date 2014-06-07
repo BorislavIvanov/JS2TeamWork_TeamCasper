@@ -23,8 +23,8 @@
                     //for (var i = 0; i < s.inCollision.length; i++) {
                     //    console.log(s.inCollision[i].id);
                     //}
-                    for (var elementIndex in s.inCollision) {
-                        var test = s.inCollision[elementIndex].getId();
+                    for (var elementIndex in casper.inCollision) {
+                        var test = casper.inCollision[elementIndex].getId();
                         if (test) {
                             if (test == spring.image.getId()) {
                                 onSpring = true;
@@ -32,7 +32,7 @@
                         }
                     }
                     if (onSpring) {
-                        jump(1000);
+                        jump(1200);
                     }
                     imageObj.src = '../resources/button-mousedown.png';
                     setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 200);

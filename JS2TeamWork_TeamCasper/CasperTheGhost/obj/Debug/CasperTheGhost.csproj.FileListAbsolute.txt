@@ -3,3 +3,9 @@ D:\#Telerik#\#GitHub Directory#\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\Ca
 D:\#Telerik#\#GitHub Directory#\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.csprojResolveAssemblyReference.cache
 D:\#Telerik#\#GitHub Directory#\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.dll
 D:\#Telerik#\#GitHub Directory#\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.pdb
+D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\bin\CasperTheGhost.dll.config
+D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\bin\CasperTheGhost.dll
+D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\bin\CasperTheGhost.pdb
+D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.csprojResolveAssemblyReference.cache
+D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.dll
+D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.pdb

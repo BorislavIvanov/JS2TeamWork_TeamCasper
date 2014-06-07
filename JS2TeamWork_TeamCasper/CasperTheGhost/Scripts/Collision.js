@@ -1,6 +1,6 @@
 ﻿function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one rectangle, while the object variables belong to another rectangle
     var oTop = object.getY();
-    if(object.getId()==='spring1'){
+    if(object.getName()==='spring'){
         oTop = oTop + 122 - object.getHeight();
     }
     var oLeft = object.getX();
