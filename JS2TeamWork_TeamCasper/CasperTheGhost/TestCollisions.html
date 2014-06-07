@@ -21,7 +21,7 @@
         });
         var layerOne = new Kinetic.Layer();
         var layerTwo = new Kinetic.Layer();
-        var s = new Casper(200, 200, layerTwo, stage);
+        var casper = new Casper(200, 200, layerTwo, stage);
         var rect = new Kinetic.Rect({
             x: 500,
             y: 280,
@@ -84,23 +84,23 @@
                 //    console.log('casperY+100' + (s.posY+100));
                 //    console.log('springY' + collisionObjects[i].getY());
                 //}
-                var casperX = s.image.getX();
-                var casperY = s.image.getY();
+                var casperX = casper.image.getX();
+                var casperY = casper.image.getY();
                 if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
-                    s.speed = 0;
-                    s.image.setX(collisionObjects[i].getX() - 100);
+                    casper.speed = 0;
+                    casper.image.setX(collisionObjects[i].getX() - 100);
                     inCollision.push(collisionObjects[i]);
                 } else {
-                    s.speed = 2;
+                    casper.speed = 2;
                 }
 
                 if (checkCollide(casperX + 50, casperY + 100, collisionObjects[i])) {
                     
 
                     if (collisionObjects[i].getName() == 'spring') {
-                        s.image.setY(collisionObjects[i].getY() - 30);
+                        casper.image.setY(collisionObjects[i].getY() - 30);
                     } else {
-                        s.image.setY(collisionObjects[i].getY() - 100);
+                        casper.image.setY(collisionObjects[i].getY() - 100);
                     }
 
                     gravity = 0;
@@ -109,13 +109,13 @@
                     gravity = 2;
                 }
             }
-            s.inCollision = inCollision;
+            casper.inCollision = inCollision;
             //}, 20);
         }
     </script>
-    <button onclick="s.move('idle')">stay</button>
-    <button onclick="s.move('left')">left</button>
-    <button onclick="s.move('right')">right</button>
-    <button onclick="(function(){s.speed=-5})()">Reverse turbo</button>
+    <button onclick=" casper.move('idle')">stay</button>
+    <button onclick=" casper.move('left')">left</button>
+    <button onclick=" casper.move('right')">right</button>
+    <button onclick="(function(){casper.speed=-5})()">Reverse turbo</button>
 </body>
 </html>
