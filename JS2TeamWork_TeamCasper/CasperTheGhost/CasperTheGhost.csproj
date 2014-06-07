@@ -67,6 +67,7 @@
     <Content Include="Resources\button-hover.png" />
     <Content Include="Resources\button-mousedown.png" />
     <Content Include="Resources\button.png" />
+    <Content Include="Resources\ControlLever.png" />
     <Content Include="Resources\flatButton.png" />
     <Content Include="Resources\GhostSprites.png" />
     <Content Include="Resources\spring.png" />
@@ -74,6 +75,7 @@
     <Content Include="Scripts\button.js" />
     <Content Include="Scripts\CasperObject.js" />
     <Content Include="Scripts\Collision.js" />
+    <Content Include="Scripts\ControlLever.js" />
     <Content Include="Scripts\Engine.js" />
     <Content Include="Scripts\flatButton.js" />
     <Content Include="Scripts\GameLoader.js" />
