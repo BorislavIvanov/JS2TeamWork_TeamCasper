@@ -2,7 +2,7 @@
  * Created by BoBBy on 05.06.14.
  */
 
-function AssemblyLine(layer, x, y, speed) {
+function AssemblyLine(x, y, layer, stage, speed) {
     var assemblyLine = {
         posX: x,
         posY: y,
@@ -35,6 +35,7 @@ function AssemblyLine(layer, x, y, speed) {
             });
 
             layer.add(lineAnimation);
+            stage.add(layer);
             lineAnimation.start();
 
             return lineAnimation;

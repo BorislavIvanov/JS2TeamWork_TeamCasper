@@ -7,6 +7,7 @@
     <div id="canvas-container"></div>
     <script src="Scripts/kinetic-v5.1.0.min.js"></script>
     <script src="Scripts/AssemblyLine.js"></script>
+    <script src="Scripts/ControlLever.js"></script>
 
     <script>
         //test
@@ -18,9 +19,8 @@
 
         var layerOne = new Kinetic.Layer();
         
-        var newAssemblyLine = new AssemblyLine(layerOne, 30, 30, 15);
-
-        drawField.add(layerOne);
+        var newAssemblyLine = new AssemblyLine(30, 30, layerOne, drawField, 15);
+        var newControlLever = new ControlLever(50, 100, layerOne, drawField);
     </script>
 </body>
 </html>
