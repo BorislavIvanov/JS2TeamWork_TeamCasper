@@ -20,7 +20,7 @@
             height: 600
         });
         var layerOne = new Kinetic.Layer();
-        var layerTwo = new Kinetic.Layer();
+        var layerTwo = new Kinetic.Layer();S
         var s = new Casper(200, 200, layerTwo, stage);
         var rect = new Kinetic.Rect({
             x: 500,
@@ -38,6 +38,8 @@
         })
         var beamImage = new Image();
         var corpusImage = new Image();
+        var handleImage = new Image();
+        var handImage = new Image();
         var beamLevel1 = new Kinetic.Image({
             x: 232,
             y:-64,
@@ -55,9 +57,26 @@
             height: 27,
 
         })
+        var HandleLevel1 = new Kinetic.Image({
+            x: 170,
+            y: 206,
+            image: handleImage,
+            width: 44,
+            height: 20,
+
+        })
+        var Handle = new Kinetic.Image({
+            x: 180,
+            y: 206,
+            image: handImage,
+            width:21,
+            height:53,
+
+        })
         beamImage.src = "../Resources/beamLevel1.png"
         corpusImage.src = "../Resources/korpus.png"
-
+        handleImage.src = "../Resources/HandleLevel1.png"
+        handImage.src = "../Resources/Handle.png"
         var levelOne = new Level(1);
         var backgroundLayer = new Kinetic.Layer();
         var backgroundImage = new Image();
@@ -85,7 +104,9 @@
         layerOne.add(rect);
         layerOne.add(rect1);
         layerOne.add(beamLevel1);
+        layerOne.add(Handle);
         layerTwo.add(corpusLevel1);
+        layerTwo.add(HandleLevel1);
         //layerOne.add(ourSpring);
         //stage.add(layerOne);
         //stage.add(layerTwo);
@@ -98,6 +119,8 @@
         collisionObjects.push(rect1);
         collisionObjects.push(beamLevel1);
         collisionObjects.push(corpusLevel1);
+        collisionObjects.push(HandleLevel1);
+        collisionObjects.push(Handle);
         collisionObjects.push(ourSpringImage);
         console.log('SpringY ' + ourSpringImage.getY());
         console.log('SpringHeight ' + ourSpringImage.getHeight());
