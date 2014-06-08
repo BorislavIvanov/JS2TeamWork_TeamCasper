@@ -31,14 +31,14 @@ function assebliesLoad(jsFilesToAddInDOM) {
 }
 
 function objectsBiulder(object, objLeyer) {
-    switch (object.type) {
+    switch (object.name) {
         case 'rect':
             var rect = new Kinetic.Rect({
                 x: object.x,
                 y: object.y,
                 width: object.width,
                 height: object.height,
-                fill: 'transparent'
+                fill: 'orange'
             });
             objLeyer.add(rect);
             collisionObjects.push(rect);
@@ -46,7 +46,7 @@ function objectsBiulder(object, objLeyer) {
         case 'spring':
             $.getScript('Scripts/spring.js',
                 function () {
-                    var thisSpring = Spring(object.x, object.y, objLeyer, stage, object.name);
+                    var thisSpring = Spring(object.x, object.y, objLeyer, stage, object.id);
                     var ourSpringImage = thisSpring.image.rotate(0);
                     $.getScript('Scripts/button.js', function () {
                         var but = Button(object.button.x, object.button.y, objLeyer, stage, thisSpring);

@@ -32,7 +32,7 @@
                         }
                     }
                     if (onSpring) {
-                        jump(1000);
+                        jump(1200);
                     }
                     imageObj.src = '../resources/button-mousedown.png';
                     setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 200);
