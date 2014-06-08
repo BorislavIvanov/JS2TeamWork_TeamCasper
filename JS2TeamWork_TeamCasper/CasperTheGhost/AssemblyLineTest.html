@@ -18,9 +18,9 @@
         });
 
         var layerOne = new Kinetic.Layer();
-        
-        var newAssemblyLine = new AssemblyLine(30, 30, layerOne, drawField, 15);
+
         var newControlLever = new ControlLever(50, 100, layerOne, drawField);
+        var newAssemblyLine = new AssemblyLine(30, 30, layerOne, drawField, 15, newControlLever);
     </script>
 </body>
 </html>
