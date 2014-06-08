@@ -1,8 +1,8 @@
 ﻿
 
-function Spring(x, y, layer, stage, id) {
+function Spring(x, y, layer, stage, id, rotation) {
     var spring = {
-        
+
         posX: x,
         posY: y,
         width: 101,
@@ -15,8 +15,9 @@ function Spring(x, y, layer, stage, id) {
                 x: x,
                 y: y + 82,
                 width: 101,
-                height: 57,
-                name:'spring',
+                height: 40,
+                rotation: rotation,
+                name: 'spring',
                 image: imageObj,
                 animation: 'idle',
                 animations: {
@@ -65,7 +66,7 @@ function Spring(x, y, layer, stage, id) {
                     }
                 }
             }, false);
-            return innerSpring;
+            return innerSpring.rotate(rotation);
         })(x, y)
     }
     return spring;

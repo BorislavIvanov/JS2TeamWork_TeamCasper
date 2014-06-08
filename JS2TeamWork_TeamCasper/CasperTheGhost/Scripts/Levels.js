@@ -6,8 +6,9 @@
             {
                 name: 'spring',
                 id: 'spring1',
-                x: 417,
-                y: 280,
+                x: 415,
+                y: 275,
+                rotation: 5,
                 button:
                     { name: 'button', x: 550, y: 450 }
             },

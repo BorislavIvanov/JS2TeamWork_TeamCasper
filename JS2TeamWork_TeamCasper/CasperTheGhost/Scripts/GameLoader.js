@@ -46,7 +46,7 @@ function objectsBiulder(object, objLeyer) {
         case 'spring':
             $.getScript('Scripts/spring.js',
                 function () {
-                    var thisSpring = Spring(object.x, object.y, objLeyer, stage, object.id);
+                    var thisSpring = Spring(object.x, object.y, objLeyer, stage, object.id, object.rotation);
                     var ourSpringImage = thisSpring.image.rotate(0);
                     $.getScript('Scripts/button.js', function () {
                         var but = Button(object.button.x, object.button.y, objLeyer, stage, thisSpring);

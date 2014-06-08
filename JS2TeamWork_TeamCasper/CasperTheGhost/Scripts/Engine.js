@@ -39,7 +39,7 @@ var casper;
 
 
 function jump(time) {
-    gravity = -150;
+    gravity = -210;
     setTimeout(function () { gravity = 2; }, time);
 }
 
@@ -83,7 +83,7 @@ function goBabyGo() {
 
 
             if (collisionObjects[i].getName() == 'spring') {
-                casper.image.setY(collisionObjects[i].getY() - 30);
+                casper.image.setY(collisionObjects[i].getY() - 15);
             } else {
                 casper.image.setY(collisionObjects[i].getY() - 100);
             }
