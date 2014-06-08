@@ -6,41 +6,80 @@ function ControlLever(x, y, layer, stage) {
     var controlLever = {
         posX: x,
         posY: y,
-        init: function () {
+        isWorking: false,
+        image: (function (pX, pY) {
             var leverImage = new Image();
             leverImage.src = '/Resources/ControlLever.png';
 
             var leverAnimation = new Kinetic.Sprite({
-                x: controlLever.posX,
-                y: controlLever.posY,
+                x: pX,
+                y: pY,
                 image: leverImage,
-                animation: 'movingLever',
+                animation: 'switchedOff',
                 animations: {
-                    staticLever: [
-                        // x, y, width, height
-                        0, 0, 161, 161
+                    // x, y, width, height
+                    switchedOff: [
+                        0, 0, 48, 49
                     ],
-                    movingLever: [
-                        // x, y, width, height
-                        0, 0, 161, 161,
-                        156, 0, 161, 161,
-                        316, 0, 161, 161,
-                        478, 0, 161, 161,
-                        639, 0, 161, 161
+                    movingLeverON: [
+                        0, 0, 48, 49,
+                        47, 0, 48, 49,
+                        95, 0, 48, 49,
+                        144, 0, 48, 49,
+                        192, 0, 48, 49
                     ],
+                    switchedOn: [
+                        192, 0, 48, 49
+                    ],
+                    movingLeverOFF: [
+                        192, 0, 48, 49,
+                        144, 0, 48, 49,
+                        95, 0, 48, 49,
+                        47, 0, 48, 49,
+                        0, 0, 48, 49,
+                    ]
                 },
                 frameRate: 10,
                 frameIndex: 0
             });
-
+            
             layer.add(leverAnimation);
             stage.add(layer);
             leverAnimation.start();
 
+            var frameCount = 0;
+
+            //On click animation
+            leverAnimation.on('frameIndexChange', function (evt) {
+
+                if (leverAnimation.animation() === 'movingLeverON') {
+                    if (++frameCount > 5) {
+                        leverAnimation.animation('switchedOn');
+                        frameCount = 0;
+                    }
+                }
+                else if (leverAnimation.animation() === 'movingLeverOFF') {
+                    if (++frameCount > 5) {
+                        leverAnimation.animation('switchedOff');
+                        frameCount = 0;
+                    }
+                }
+            }, false);
+
+            leverAnimation.on('click', function (e) {
+                if (controlLever.isWorking == false) { //On click event for switching from OFF to ON
+                    leverAnimation.animation('movingLeverON');
+                    controlLever.isWorking = true;
+                }
+                else {
+                    leverAnimation.animation('movingLeverOFF');
+                    controlLever.isWorking = false;
+                }
+            })
+
             return leverAnimation;
-        }
+        })(x, y)
     }
 
-    controlLever.init();
     return controlLever;
 }
