@@ -20,16 +20,15 @@ function AssemblyLine(x, y, layer, stage, speed, controler) {
                 animations: {
                     staticLine: [
                         // x, y, width, height
-                        0, 0, 799, 43,
-                        0, 0, 799, 43
+                        0, 0, 600, 33
                     ],
                     workingLine: [
                         // x, y, width, height
-                        0, 0, 799, 43,
-                        0, 54, 799, 43,
-                        0, 112, 799, 43,
-                        0, 167, 799, 43,
-                        0, 225, 799, 43
+                        0, 0, 600, 33,
+                        0, 40, 600, 33,
+                        0, 84, 600, 33,
+                        0, 125, 600, 33,
+                        0, 168, 600, 33
                     ]
                 },
                 frameRate: assemblyLine.lineSpeed,
