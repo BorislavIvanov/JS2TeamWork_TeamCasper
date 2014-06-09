@@ -67,7 +67,7 @@ function ControlLever(x, y, layer, stage) {
             }, false);
 
             leverAnimation.on('click', function (e) {
-                if (controlLever.isWorking == false) { //On click event for switching from OFF to ON
+                if (!controlLever.isWorking) { //On click event for switching from OFF to ON
                     leverAnimation.animation('movingLeverON');
                     controlLever.isWorking = true;
                 }

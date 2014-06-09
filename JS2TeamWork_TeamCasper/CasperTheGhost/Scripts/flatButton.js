@@ -3,27 +3,25 @@
         posX: x,
         posY: y,
         pressed: isPressed,
-        width: 100,
-        height: 35,
-        getImage: function () {
+
+        image: (function (x, y) {
             if (this.pressed) {
                 this.height = 20;
             }
 
             var imageObj = new Image();
-            imageObj.onload = function () {
-                var innerFlatButton = new Kinetic.Image({
-                    x: flatButton.posX,
-                    y: flatButton.posY,
-                    width: flatButton.width,
-                    height: flatButton.height,
-                    image: imageObj,
-                });
-                layer.add(innerFlatButton);
-                stage.add(layer);
-            }
-
             imageObj.src = '../resources/flatButton.png';
+
+            var innerFlatButton = new Kinetic.Image({
+                x: x,
+                y: y,
+                width: 100,
+                height: 50,
+                name: 'flatButton',
+                image: imageObj,
+            });
+            layer.add(innerFlatButton);
+            stage.add(layer);
 
             //innerImage.on('mousedown', function (evt) {
             //    //imageObj.src = '../resources/button-mousedown.png';
@@ -38,9 +36,9 @@
             //innerImage.on('mouseout', function (evt) {
             //    //imageObj.src = '../resources/button.png';
             //});
-            //return innerFlatButton;
-        }
+            return innerFlatButton;
+        })(x, y)
     }
-    flatButton.getImage();
+    //flatButton.getImage();
     return flatButton;
 }

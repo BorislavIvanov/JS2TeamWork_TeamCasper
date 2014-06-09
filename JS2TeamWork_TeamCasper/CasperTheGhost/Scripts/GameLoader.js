@@ -7,7 +7,7 @@ function loadLevel(levelNumber) {
     $.getScript('Scripts/CasperObject.js',
         function () {
             var caserLayer = new Kinetic.Layer();
-            casper = Casper(200, 200, caserLayer, stage);
+            casper = Casper(100, 100, caserLayer, stage);
         }
     );
     loadBackground(level.background);
@@ -52,6 +52,34 @@ function objectsBiulder(object, objLeyer) {
                         var but = Button(object.button.x, object.button.y, objLeyer, stage, thisSpring);
                     });
                     collisionObjects.push(ourSpringImage);
+                });
+            break;
+        case 'controler':
+            $.getScript('Scripts/ControlLever.js',
+                function () {
+                    var thisControler = ControlLever(object.x, object.y, objLeyer, stage);
+                    var ourControlerImage = thisControler.image;
+                    $.getScript('Scripts/AssemblyLine.js', function () {
+                        var line = AssemblyLine(object.line.x, object.line.y, objLeyer, stage, 4, thisControler);
+                        collisionObjects.push(line.image);
+                    });
+                    collisionObjects.push(ourControlerImage);
+                });
+            break;
+        case 'casperEnemy':
+            $.getScript('Scripts/SampleCasperEnemy.js',
+                function () {
+                    var ourEnemy = sampleCasperEnemy(object.x, object.y, object.width, object.height);
+                    objLeyer.add(ourEnemy);
+                    collisionObjects.push(ourEnemy);
+                });
+            break;
+        case 'flatButton':
+            $.getScript('Scripts/flatButton.js',
+                function () {
+                    var ourFlatButton = flatButton(object.x, object.y, objLeyer, stage, false);
+                    var ourFlatButtonImage = ourFlatButton.image;
+                    collisionObjects.push(ourFlatButtonImage);
                 });
             break;
         default:
