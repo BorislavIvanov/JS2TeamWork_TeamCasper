@@ -11,7 +11,35 @@
     <script src="Scripts/Engine.js"></script>
     <!--tuk shte e Menuto koeto shte vika Game loader-->
     <script src="Scripts/GameLoader.js"></script>
+    <script src="Scripts/raphael-min.js"></script>
     <script>
+        var paper = Raphael(10, 10, 800, 600);
+        //paper.canvas.style.backgroundColor = 'yellow';
+
+        var image = paper.image('Resources/CasperTitle.png', 350, 60, 100, 40);
+        var stepRotation = 1;
+        var scaleCount = 0;
+        (function rotateCasper() {
+            image.rotate(3);
+            stepRotation += 3;
+            image.scale(1.008, 1.008)
+            if (stepRotation < 720) {
+                setTimeout(function () { rotateCasper() }, 20);
+            }
+            else {
+                scaleCasper();
+            }
+        }());
+        
+        function scaleCasper() {
+            scaleCount++;
+            image.scale(1.005, 1.005);
+            if (scaleCount <= 50) {
+                setTimeout(function () { scaleCasper() }, 5);
+            }
+            setTimeout(function () { }, 10000);
+            paper.remove();
+        }
         var stage = new Kinetic.Stage({
             container: 'canvas-container',
             width: 800,

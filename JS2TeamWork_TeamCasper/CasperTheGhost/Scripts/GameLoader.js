@@ -66,12 +66,12 @@ function objectsBiulder(object, objLeyer) {
                     collisionObjects.push(ourControlerImage);
                 });
             break;
-        case 'casperEnemy':
+        case 'spark':
             $.getScript('Scripts/SampleCasperEnemy.js',
                 function () {
-                    var ourEnemy = sampleCasperEnemy(object.x, object.y, object.width, object.height);
-                    objLeyer.add(ourEnemy);
-                    collisionObjects.push(ourEnemy);
+                    var ourSpark = sampleCasperEnemy(object.x, object.y, object.width, object.height,objLeyer,stage);
+                    var ourSparkImage = ourSpark.image;
+                    collisionObjects.push(ourSparkImage);
                 });
             break;
         case 'flatButton':

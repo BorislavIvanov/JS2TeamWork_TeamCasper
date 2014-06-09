@@ -37,9 +37,9 @@
 
             },
             {
-                name: 'casperEnemy',
-                x: 410,
-                y: 250,
+                name: 'spark',
+                x: 423,
+                y: 259,
                 width: 130,
                 height: 20,
             },
