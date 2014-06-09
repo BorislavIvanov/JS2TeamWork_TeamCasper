@@ -44,6 +44,7 @@
                 height: 20,
             },
             { name: 'rect', x: 0, y: 220, width: 420, height: 20 },
+            { name: 'rect', x: 560, y: 220, width: 47, height: 20 },
             { name: 'rect', x: 690, y: 220, width: 110, height: 20 },
             { name: 'rect', x: 0, y: 520, width: 820, height: 20 }
         ],

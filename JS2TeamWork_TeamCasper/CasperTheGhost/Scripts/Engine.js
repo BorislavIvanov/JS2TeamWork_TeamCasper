@@ -64,11 +64,10 @@ function loadBackground(image) {
 
 function goBabyGo() {
     var inCollision = [];
+    var casperX = casper.image.getX();
+    var casperY = casper.image.getY();
+    
     for (var i = 0; i < collisionObjects.length; i++) {
-
-        var casperX = casper.image.getX();
-        var casperY = casper.image.getY();
-
         if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
             casper.speed = 0;
             casper.image.setX(collisionObjects[i].getX() - 100);
@@ -97,8 +96,8 @@ function goBabyGo() {
                 casper.image.setY(collisionObjects[i].getY() - 15);
             }
             else if (objectName === 'flatButton') {
-                collisionObjects[i].setHeight(collisionObjects[i].getHeight() - 30);
-                collisionObjects[i].setY(collisionObjects[i].getY() + 20);
+                collisionObjects[i].setHeight(25);
+                collisionObjects[i].setY(200);
 
             }
 

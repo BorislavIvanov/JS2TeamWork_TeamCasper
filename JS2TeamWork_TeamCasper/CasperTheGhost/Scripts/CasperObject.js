@@ -81,7 +81,7 @@ function Casper(x, y, layer, stage) {
                         1100, 300, 100, 100,
                         1100, 300, 100, 100
                     ],
-                    
+
                 },
                 frameRate: 12,
                 frameIndex: 0
@@ -94,7 +94,19 @@ function Casper(x, y, layer, stage) {
 
             var anim = new Kinetic.Animation(function (frame) {
                 blob.setX(blob.getX() + (casper.speed * casper.multi));
-                blob.setY(blob.getY() +  gravity);
+                blob.setY(blob.getY() + gravity);
+                if (blob.getX() + 100 > stage.getWidth()) {
+                    blob.setX(stage.getWidth() - 100);
+                }
+                if (blob.getX() < 0) {
+                    blob.setX(0);
+                }
+                if (blob.getY()+100>stage.getHeight()) {
+                    gravity = 1;
+                    if (casper.image.animation() !== 'dead') {
+                        casper.move('die');
+                    }
+                }
                 goBabyGo();
                 //if (blob.animation === 'die' && frameCounter > 12) {
                 //    blob.stop();
@@ -118,12 +130,12 @@ function Casper(x, y, layer, stage) {
                 }
             }, false);
             return blob;
-        })(x,y),
+        })(x, y),
         move: function (newDirection) {
 
             this.direction = newDirection;
             this.multi = 0;
-            if (newDirection!=='die') {
+            if (newDirection !== 'die') {
                 this.speed = 2;
             }
             if (newDirection === 'left') {
