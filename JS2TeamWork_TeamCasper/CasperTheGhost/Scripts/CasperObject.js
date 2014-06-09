@@ -62,7 +62,26 @@ function Casper(x, y, layer, stage) {
                         900, 100, 100, 100,
                         1000, 100, 100, 100,
                         1100, 100, 100, 100
-                    ]
+                    ],
+                    die: [
+                        0, 300, 100, 100,
+                        100, 300, 100, 100,
+                        200, 300, 100, 100,
+                        300, 300, 100, 100,
+                        400, 300, 100, 100,
+                        500, 300, 100, 100,
+                        600, 300, 100, 100,
+                        700, 300, 100, 100,
+                        800, 300, 100, 100,
+                        900, 300, 100, 100,
+                        1000, 300, 100, 100,
+                        1100, 300, 100, 100
+                    ],
+                    dead: [
+                        1100, 300, 100, 100,
+                        1100, 300, 100, 100
+                    ],
+                    
                 },
                 frameRate: 12,
                 frameIndex: 0
@@ -78,7 +97,16 @@ function Casper(x, y, layer, stage) {
             }, layer);
             anim.start();
 
+            var frameCounter = 0;
+
             blob.on('frameIndexChange', function (evt) {
+                if (blob.animation() == 'die') {
+                    if (++frameCounter > 12) {
+                        blob.animation('dead');
+                        frameCounter = 0;
+                    }
+                }
+
                 if (casper.animationChange) {
                     casper.animationChange = false;
                     blob.animation(casper.direction);
