@@ -65,28 +65,33 @@ function loadBackground(image) {
 function goBabyGo() {
     var inCollision = [];
     for (var i = 0; i < collisionObjects.length; i++) {
-        //if ((s.posY+100)>496&&(s.posY+100<510)) {
-        //    console.log('casperY+100' + (s.posY+100));
-        //    console.log('springY' + collisionObjects[i].getY());
-        //}
+      
         var casperX = casper.image.getX();
         var casperY = casper.image.getY();
+        
         if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
             casper.speed = 0;
             casper.image.setX(collisionObjects[i].getX() - 100);
             inCollision.push(collisionObjects[i]);
         } else {
             if (casper.direction !== 'die') {
-                casper.speed = 2;
+                if (casper.speed <= 2) {
+                    casper.speed += 0.03;
+                }
             }
 
         }
 
         if (checkCollide(casperX + 50, casperY + 100, collisionObjects[i])) {
             var objectName = collisionObjects[i].getName();
-            if (collisionObjects[i].casperEnemy) {
-                casper.move('die');
-                break;
+            if (collisionObjects[i].getAttr('casperEnemy')) {
+                if (casper.image.animation() !== 'dead') {
+                    casper.move('die');
+                }
+                gravity = 0;
+                casper.speed = 0;
+                
+                return;
             }
             if (objectName === 'spring') {
                 casper.image.setY(collisionObjects[i].getY() - 15);
@@ -97,23 +102,19 @@ function goBabyGo() {
             }
 
             else if (objectName === 'line') {
-                console.log(collisionObjects[i].speed);
-
+                lineFlag = true;
+                var spd = collisionObjects[i].getAttr('rspeed');
                 casper.image.setY(collisionObjects[i].getY() - 85);
-                if (collisionObjects[i].getAnimation() === 'workingLine') {
-                    casper.speed = 2 - collisionObjects[i].speed;
-                }
-
+                if (collisionObjects[i].animation() === 'workingLine') {
+                    casper.speed = -spd;
+                    
+                } 
             }
 
             else {
                 casper.image.setY(collisionObjects[i].getY() - 100);
+                
             }
-
-
-            //else if (collisionObjects[i].getName() === 'line') {
-            //    casper.image.setY(collisionObjects[i].getY() - 20);
-            //}
 
             gravity = 0;
 
@@ -121,7 +122,6 @@ function goBabyGo() {
         } else {
             if (casper.direction !== 'die') {
                 gravity = 2;
-
             }
         }
     }

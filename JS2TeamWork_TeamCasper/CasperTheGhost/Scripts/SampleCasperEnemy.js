@@ -5,7 +5,7 @@
         width: width,
         height: height,
         fill: 'red',
+        casperEnemy : true
     });
-    sampleCasperEnemy.casperEnemy = true;
     return sampleCasperEnemy;
 }

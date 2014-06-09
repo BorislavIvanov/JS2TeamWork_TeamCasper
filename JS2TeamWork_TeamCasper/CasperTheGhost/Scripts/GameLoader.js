@@ -60,7 +60,7 @@ function objectsBiulder(object, objLeyer) {
                     var thisControler = ControlLever(object.x, object.y, objLeyer, stage);
                     var ourControlerImage = thisControler.image;
                     $.getScript('Scripts/AssemblyLine.js', function () {
-                        var line = AssemblyLine(object.line.x, object.line.y, objLeyer, stage, 4, thisControler);
+                        var line = AssemblyLine(object.line.x, object.line.y, objLeyer, stage, 6, thisControler);
                         collisionObjects.push(line.image);
                     });
                     collisionObjects.push(ourControlerImage);
