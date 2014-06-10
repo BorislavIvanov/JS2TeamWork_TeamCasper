@@ -1,4 +1,5 @@
-﻿
+﻿/// <reference path="rotaryBeam.js" />
+
 
 function loadLevel(levelNumber) {
     var level = levels[levelNumber - 1];
@@ -69,19 +70,34 @@ function objectsBiulder(object, objLeyer) {
         case 'spark':
             $.getScript('Scripts/SampleCasperEnemy.js',
                 function () {
-                    var ourSpark = sampleCasperEnemy(object.x, object.y, object.width, object.height,objLeyer,stage);
+                    var ourSpark = new sampleCasperEnemy(object.x, object.y, object.width, object.height, objLeyer, stage);
                     var ourSparkImage = ourSpark.image;
                     collisionObjects.push(ourSparkImage);
                 });
             break;
-        case 'flatButton':
-            $.getScript('Scripts/flatButton.js',
+        case 'rotaryBeam':
+            $.getScript('Scripts/rotaryBeam.js',
                 function () {
-                    var ourFlatButton = flatButton(object.x, object.y, objLeyer, stage, false);
-                    var ourFlatButtonImage = ourFlatButton.image;
-                    collisionObjects.push(ourFlatButtonImage);
-                });
+                    var rotaryBeam = new beamLevelTwo(object.x, object.y, objLeyer, stage);
+                    var rotaryBeamImage = rotaryBeam.image;
+                    $.getScript('Scripts/flatButton.js', function () {
+                        var ourFlatButton = flatButton(object.flatButton.x, object.flatButton.y, objLeyer, stage, rotaryBeam, false);
+                        var ourFlatButtonImage = ourFlatButton.image;
+                        collisionObjects.push(ourFlatButtonImage);
+                    });
+                    collisionObjects.push(rotaryBeamImage);
+                }
+
+                )
             break;
+        //case 'flatButton':
+        //    $.getScript('Scripts/flatButton.js',
+        //        function () {
+        //            var ourFlatButton = flatButton(object.x, object.y, objLeyer, stage, rotaryBeam, false);
+        //            var ourFlatButtonImage = ourFlatButton.image;
+        //            collisionObjects.push(ourFlatButtonImage);
+        //        });
+        //    break;
         default:
             break;
     }
