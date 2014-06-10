@@ -103,9 +103,9 @@ function Casper(x, y, layer, stage) {
                 if (blob.animation() === 'die') {
                     casper.animationChange = false;
                     if (++frameCounter > 12) {
-                        
                         blob.animation('dead');
                         frameCounter = 0;
+                        scoreInput();
                     }
                 }
 

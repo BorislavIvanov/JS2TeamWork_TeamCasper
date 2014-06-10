@@ -6,6 +6,43 @@ var scoreBox;
 var initialScore;
 var playerScore;
 
+function scoreInput() {
+    var inputForm = document.createElement('input');
+    var label = document.createElement('label');
+    label.style.position = 'absolute';
+    label.style.top = '102px';
+    label.style.left = '285px';
+    label.style.color = 'darkgray';
+    label.style.fontSize = '22px';
+    label.innerHTML = 'Your name';
+    inputForm.type = 'text';
+    inputForm.autofocus = true;
+    inputForm.style.position = 'absolute';
+    inputForm.style.backgroundColor = 'lightgray';
+    inputForm.style.border = '6px solid gray';
+    inputForm.style.borderRadius = '10px';
+    inputForm.style.top = '100px';
+    inputForm.style.left = '400px';
+    document.body.appendChild(label);
+    document.body.appendChild(inputForm);
+    inputForm.addEventListener('keydown', function (ev) {
+        if (ev.keyCode === 13) {
+            var currentData = {
+                name: inputForm.value,
+                score: scoreBox.getAttr('text')
+            }
+            saveToScoreBoard(currentData)
+            inputForm.parentNode.removeChild(inputForm);
+            label.parentNode.removeChild(label);
+            //stage = new Kinetic.Stage({
+            //    container: 'canvas-container',
+            //    width: 800,
+            //    height: 600
+            //});
+        }
+    })
+}
+
 function createCountDown(timeRemaining) {
     var startTime = Date.now();
     return function () {
@@ -37,6 +74,18 @@ function loadBackground(image) {
     backgroundImage.src = '../Resources/' + image;
 }
 
+function saveToScoreBoard(playerData) {
+    var currentScoreBoard = JSON.parse(localStorage.getItem('CasperScoreBoard'));
+    if (!currentScoreBoard) {
+        currentScoreBoard = {
+            scores: []
+        }
+    }
+    currentScoreBoard.scores.push(playerData);
+    currentScoreBoard.scores.sort(function (a, b) { return (b.score - a.score) });
+    localStorage.setItem('CasperScoreBoard', JSON.stringify(currentScoreBoard));
+}
+
 function outOfField(x, y) {
     if (x + 100 > stage.getWidth()) {
         casper.image.setX(stage.getWidth() - 100);
@@ -56,7 +105,7 @@ function outOfField(x, y) {
 var isFlatButtonPressed = false;
 var angleOfRotation = 1;
 function goBabyGo() {
-    playerScore = Math.floor(initialScore()/1000);
+    playerScore = Math.floor(initialScore() / 1000);
     scoreBox.setAttr('text', playerScore);
     var inCollision = [];
     var casperX = casper.image.getX();
