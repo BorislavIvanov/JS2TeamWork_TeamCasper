@@ -1,43 +1,17 @@
-﻿////TEST
-//var drawField = new Kinetic.Stage({
-//    container: 'canvas-container',
-//    width: 800,
-//    height: 600
-//});
-
-//var layerOne = new Kinetic.Layer();
-
-//var rect = new Kinetic.Rect({
-//    fill: 'yellowgreen',
-//    stroke: '#CCCCCC',
-//    x: 250,
-//    y: 350,
-//    width: 57,
-//    height: 93
-//});
-
-//layerOne.add(rect);
-//drawField.add(layerOne);
-////TEST
-
-//Global
-
-//stage = new Kinetic.Stage({
-//    container: 'canvas-container',
-//    width: 800,
-//    height: 600
-//});
-
-
-
-//Global
-//$.getScript('Scripts/CasperObject.js');
-
-var gravity = 2;
+﻿var gravity = 2;
 var collisionObjects = [];
 var casper;
 var rotatedBeam;
+var scoreBox;
+var initialScore;
+var playerScore;
 
+function createCountDown(timeRemaining) {
+    var startTime = Date.now();
+    return function () {
+        return timeRemaining - (Date.now() - startTime);
+    }
+}
 
 function jump(time) {
     gravity = -210;
@@ -63,12 +37,31 @@ function loadBackground(image) {
     backgroundImage.src = '../Resources/' + image;
 }
 
+function outOfField(x, y) {
+    if (x + 100 > stage.getWidth()) {
+        casper.image.setX(stage.getWidth() - 100);
+    }
+    if (x < 0) {
+        casper.image.setX(0);
+    }
+    if (y + 100 > stage.getHeight()) {
+        gravity = 1;
+        if (casper.image.animation() !== 'dead') {
+            casper.move('die');
+        }
+    }
+
+}
+
 var isFlatButtonPressed = false;
 var angleOfRotation = 1;
 function goBabyGo() {
+    playerScore = Math.floor(initialScore()/1000);
+    scoreBox.setAttr('text', playerScore);
     var inCollision = [];
     var casperX = casper.image.getX();
     var casperY = casper.image.getY();
+    outOfField(casperX, casperY);
 
     for (var i = 0; i < collisionObjects.length; i++) {
         if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
@@ -101,26 +94,12 @@ function goBabyGo() {
             else if (objectName === 'flatButton') {
                 collisionObjects[i].setHeight(25);
                 collisionObjects[i].setY(200);
-                
+
                 if (!isFlatButtonPressed) {
                     var rotatedBeam = collisionObjects[i].getAttr('rotaryBeam');
                     rotatedBeam.rotateBeam();
                     isFlatButtonPressed = true;
                 }
-                //if (angleOfRotation<180) {
-                //    collisionObjects[i].getAttr('rotaryBeam').image.rotate(-1);
-                //    angleOfRotation++;
-                //}
-                //if (!isFlatButtonPressed) {
-                //    collisionObjects[i].getAttr('rotaryBeam').image.rotate(-90);
-                //    //collisionObjects[i].getAttr('rotaryBeam').image.setX(425);
-                //    //collisionObjects[i].getAttr('rotaryBeam').image.setY(220);
-                //    //collisionObjects[i].getAttr('rotaryBeam').image.setWidth(153);
-                //    //collisionObjects[i].getAttr('rotaryBeam').image.setHeight(25);
-
-                //}
-                
-
             }
 
             else if (objectName === 'line') {
@@ -148,7 +127,7 @@ function goBabyGo() {
         }
     }
     casper.inCollision = inCollision;
-    //}, 20);
+
 }
 
 function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one rectangle, while the object variables belong to another rectangle
@@ -156,7 +135,7 @@ function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one 
     var oLeft = object.getX();
     var oRight = oLeft + object.getWidth();
     var oBottom = oTop + object.getHeight();
-    
+
     if (object.getName() === 'spring') {
         oTop = oTop + 122 - object.getHeight();
     }
@@ -169,14 +148,6 @@ function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one 
         oBottom = oTop + object.getWidth();
     }
 
-
-    //if (object.getName() === 'rotaryBeam') {
-    //    console.log('ho');
-        //    oTop = 220;
-        //    oLeft = 425;
-        //    oRight = 245;
-        //    oBottom = 558;
-    //}
     if (pointX >= oLeft && pointX <= oRight) {
         if (pointY >= oTop && pointY <= oBottom) {
             return true;

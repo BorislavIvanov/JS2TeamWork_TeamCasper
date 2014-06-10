@@ -1,8 +1,9 @@
 ﻿/// <reference path="rotaryBeam.js" />
 
 
+
 function loadLevel(levelNumber) {
-    var level = levels[levelNumber - 1];
+    var level = levels[levelNumber - 1]; //from Levels.js
     assebliesLoad(level.scriptsToLoad);
 
     $.getScript('Scripts/CasperObject.js',
@@ -13,11 +14,17 @@ function loadLevel(levelNumber) {
     );
     loadBackground(level.background);
     var objLayer = new Kinetic.Layer();
+
     for (var objIndex in level.collisionObjects) {
         objectsBiulder(level.collisionObjects[objIndex], objLayer);
     }
     stage.add(objLayer);
-
+    initialScore = createCountDown(level.initialScore);
+    $.getScript('Scripts/printScore.js',
+        function () {
+            scoreBox = new scoreBox(45, 480, Math.floor(initialScore()/1000), objLayer, stage);
+        }
+    );
 }
 
 
@@ -26,8 +33,6 @@ function assebliesLoad(jsFilesToAddInDOM) {
         var fileref = document.createElement('script');
         fileref.setAttribute("src", 'Scripts/' + jsFilesToAddInDOM[assemblyIndex]);
         document.getElementsByTagName("body")[0].appendChild(fileref);
-        //var bodyHtml = body.innerHTML;
-        //body.innerHTML = '<script src="Scripts/'+ jsFilesToAddInDOM[assemblyIndex] +'"></script>' + bodyHtml;
     }
 }
 
@@ -90,21 +95,10 @@ function objectsBiulder(object, objLeyer) {
 
                 )
             break;
-        //case 'flatButton':
-        //    $.getScript('Scripts/flatButton.js',
-        //        function () {
-        //            var ourFlatButton = flatButton(object.x, object.y, objLeyer, stage, rotaryBeam, false);
-        //            var ourFlatButtonImage = ourFlatButton.image;
-        //            collisionObjects.push(ourFlatButtonImage);
-        //        });
-        //    break;
         default:
             break;
     }
 }
 
-
-
-// Tests
 
 

@@ -95,23 +95,7 @@ function Casper(x, y, layer, stage) {
             var anim = new Kinetic.Animation(function (frame) {
                 blob.setX(blob.getX() + (casper.speed * casper.multi));
                 blob.setY(blob.getY() + gravity);
-                if (blob.getX() + 100 > stage.getWidth()) {
-                    blob.setX(stage.getWidth() - 100);
-                }
-                if (blob.getX() < 0) {
-                    blob.setX(0);
-                }
-                if (blob.getY()+100>stage.getHeight()) {
-                    gravity = 1;
-                    if (casper.image.animation() !== 'dead') {
-                        casper.move('die');
-                    }
-                }
                 goBabyGo();
-                //if (blob.animation === 'die' && frameCounter > 12) {
-                //    blob.stop();
-                //    anim.stop();
-                //}
             }, layer);
             anim.start();
 
@@ -119,6 +103,7 @@ function Casper(x, y, layer, stage) {
                 if (blob.animation() === 'die') {
                     casper.animationChange = false;
                     if (++frameCounter > 12) {
+                        
                         blob.animation('dead');
                         frameCounter = 0;
                     }

@@ -21,6 +21,7 @@
     //Level 2 Objects
     {
         background: 'backgroundLavel2Night.png',
+        initialScore: 300500,
         scriptsToLoad: ['CasperObject.js', 'flatButton.js', 'AssemblyLine.js', 'ControlLever.js', 'rotaryBeam.js'],
         collisionObjects: [
             {
