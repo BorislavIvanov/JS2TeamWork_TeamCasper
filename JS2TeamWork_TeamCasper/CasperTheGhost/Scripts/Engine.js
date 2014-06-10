@@ -75,9 +75,21 @@ function goBabyGo() {
             angleOfRotation++;
         }
         else {
-                isFlatButtonPressed=false
+            isFlatButtonPressed = false
         }
     }
+    //if (casperX + 100 > stage.getWidth()) {
+    //    casperX = stage.getWidth() - 100;
+    //}
+    //if (casperX < 0) {
+    //    casperX = 0;
+    //}
+    //if (casperY + 100 > stage.getHeight()) {
+    //    gravity = 1;
+    //    if (casper.image.animation() !== 'dead') {
+    //        casper.move('die');
+    //    }
+    //}
     for (var i = 0; i < collisionObjects.length; i++) {
         if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
             casper.speed = 0;
@@ -110,6 +122,19 @@ function goBabyGo() {
                 collisionObjects[i].setHeight(25);
                 collisionObjects[i].setY(200);
                 rotatedBeam = collisionObjects[i].getAttr('rotaryBeam').image;
+                if (!isFlatButtonPressed) {
+                    var rect = new Kinetic.Rect({
+                        x: 425,
+                        y: 220,
+                        width: 153,
+                        height: 25,
+                    });
+                    var objLayer = new Kinetic.Layer();
+                    objLayer.add(rect);
+                    collisionObjects.push(rect);
+                }
+                isFlatButtonPressed = true;
+
                 //if (angleOfRotation<180) {
                 //    collisionObjects[i].getAttr('rotaryBeam').image.rotate(-1);
                 //    angleOfRotation++;
@@ -122,7 +147,6 @@ function goBabyGo() {
                 //    //collisionObjects[i].getAttr('rotaryBeam').image.setHeight(25);
 
                 //}
-                isFlatButtonPressed = true;
             }
 
             else if (objectName === 'line') {
