@@ -36,6 +36,7 @@
 var gravity = 2;
 var collisionObjects = [];
 var casper;
+var rotatedBeam;
 
 
 function jump(time) {
@@ -62,11 +63,13 @@ function loadBackground(image) {
     backgroundImage.src = '../Resources/' + image;
 }
 
+var isFlatButtonPressed = false;
+var angleOfRotation = 1;
 function goBabyGo() {
     var inCollision = [];
     var casperX = casper.image.getX();
     var casperY = casper.image.getY();
-    
+
     for (var i = 0; i < collisionObjects.length; i++) {
         if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
             casper.speed = 0;
@@ -98,6 +101,25 @@ function goBabyGo() {
             else if (objectName === 'flatButton') {
                 collisionObjects[i].setHeight(25);
                 collisionObjects[i].setY(200);
+                
+                if (!isFlatButtonPressed) {
+                    var rotatedBeam = collisionObjects[i].getAttr('rotaryBeam');
+                    rotatedBeam.rotateBeam();
+                    isFlatButtonPressed = true;
+                }
+                //if (angleOfRotation<180) {
+                //    collisionObjects[i].getAttr('rotaryBeam').image.rotate(-1);
+                //    angleOfRotation++;
+                //}
+                //if (!isFlatButtonPressed) {
+                //    collisionObjects[i].getAttr('rotaryBeam').image.rotate(-90);
+                //    //collisionObjects[i].getAttr('rotaryBeam').image.setX(425);
+                //    //collisionObjects[i].getAttr('rotaryBeam').image.setY(220);
+                //    //collisionObjects[i].getAttr('rotaryBeam').image.setWidth(153);
+                //    //collisionObjects[i].getAttr('rotaryBeam').image.setHeight(25);
+
+                //}
+                
 
             }
 
@@ -131,16 +153,30 @@ function goBabyGo() {
 
 function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one rectangle, while the object variables belong to another rectangle
     var oTop = object.getY();
+    var oLeft = object.getX();
+    var oRight = oLeft + object.getWidth();
+    var oBottom = oTop + object.getHeight();
+    
     if (object.getName() === 'spring') {
         oTop = oTop + 122 - object.getHeight();
     }
     if (object.getName() === 'line') {
         oTop = oTop + 15;
     }
-    var oLeft = object.getX();
-    var oRight = oLeft + object.getWidth();
-    var oBottom = oTop + object.getHeight();
+    if (object.getName() === 'rotaryBeam') {
+        oLeft = object.getAttr('rotatedX') - 30;
+        oRight = oLeft + object.getHeight();
+        oBottom = oTop + object.getWidth();
+    }
 
+
+    //if (object.getName() === 'rotaryBeam') {
+    //    console.log('ho');
+        //    oTop = 220;
+        //    oLeft = 425;
+        //    oRight = 245;
+        //    oBottom = 558;
+    //}
     if (pointX >= oLeft && pointX <= oRight) {
         if (pointY >= oTop && pointY <= oBottom) {
             return true;

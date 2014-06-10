@@ -1,11 +1,11 @@
-﻿function flatButton(x, y, layer, stage, isPressed) {
+﻿function flatButton(x, y, layer, stage, rotaryBeam, isPressed) {
     var flatButton = {
         posX: x,
         posY: y,
-        pressed: isPressed,
-
-        image: (function (x, y) {
-            if (this.pressed) {
+        pressed: isPressed, //unused
+        rotaryBeam: rotaryBeam,
+        image: (function (x, y, rotaryBeam) {
+            if (this.pressed) {   //unused
                 this.height = 20;
             }
 
@@ -17,6 +17,7 @@
                 y: y,
                 width: 100,
                 height: 50,
+                rotaryBeam: rotaryBeam,
                 name: 'flatButton',
                 image: imageObj,
             });
@@ -37,7 +38,7 @@
             //    //imageObj.src = '../resources/button.png';
             //});
             return innerFlatButton;
-        })(x, y)
+        })(x, y, rotaryBeam)
     }
     //flatButton.getImage();
     return flatButton;
