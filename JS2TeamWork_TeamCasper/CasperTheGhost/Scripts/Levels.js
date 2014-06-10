@@ -31,19 +31,18 @@
                     { name: 'line', x: 200, y: 400 }
             },
             {
-                name: 'flatButton',
-                x: 200,
-                y: 181,
-
+                name: 'rotaryBeam',
+                x: 580,
+                y: 220,
+                flatButton: { name: 'flatButton', x: 200, y: 181, },
             },
             {
                 name: 'spark',
                 x: 423,
                 y: 259,
-                width: 130,
-                height: 20,
             },
             { name: 'rect', x: 0, y: 220, width: 420, height: 20 },
+            { name: 'rect', x: 560, y: 220, width: 47, height: 20 },
             { name: 'rect', x: 690, y: 220, width: 110, height: 20 },
             { name: 'rect', x: 0, y: 520, width: 820, height: 20 }
         ],

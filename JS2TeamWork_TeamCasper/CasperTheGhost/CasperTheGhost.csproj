@@ -74,7 +74,6 @@
     <Content Include="Scripts\AssemblyLine.js" />
     <Content Include="Scripts\button.js" />
     <Content Include="Scripts\CasperObject.js" />
-    <Content Include="Scripts\Collision.js" />
     <Content Include="Scripts\ControlLever.js" />
     <Content Include="Scripts\Engine.js" />
     <Content Include="Scripts\flatButton.js" />
