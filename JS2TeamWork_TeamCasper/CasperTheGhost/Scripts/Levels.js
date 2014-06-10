@@ -21,7 +21,7 @@
     //Level 2 Objects
     {
         background: 'backgroundLavel2Night.png',
-        scriptsToLoad: ['CasperObject.js', 'flatButton.js', 'AssemblyLine.js', 'ControlLever.js'],
+        scriptsToLoad: ['CasperObject.js', 'flatButton.js', 'AssemblyLine.js', 'ControlLever.js', 'rotaryBeam.js'],
         collisionObjects: [
             {
                 name: 'controler',
@@ -41,7 +41,7 @@
                 x: 423,
                 y: 259,
             },
-            { name: 'rect', x: 0, y: 220, width: 420, height: 20 },
+            { name: 'rect', x: 0, y: 220, width: 425, height: 20 },
             { name: 'rect', x: 560, y: 220, width: 47, height: 20 },
             { name: 'rect', x: 690, y: 220, width: 110, height: 20 },
             { name: 'rect', x: 0, y: 520, width: 820, height: 20 }

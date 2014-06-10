@@ -69,15 +69,7 @@ function goBabyGo() {
     var inCollision = [];
     var casperX = casper.image.getX();
     var casperY = casper.image.getY();
-    if (isFlatButtonPressed) {
-        if (angleOfRotation < 91) {
-            rotatedBeam.rotate(-1);
-            angleOfRotation++;
-        }
-        else {
-                isFlatButtonPressed=false
-        }
-    }
+
     for (var i = 0; i < collisionObjects.length; i++) {
         if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
             casper.speed = 0;
@@ -109,7 +101,12 @@ function goBabyGo() {
             else if (objectName === 'flatButton') {
                 collisionObjects[i].setHeight(25);
                 collisionObjects[i].setY(200);
-                rotatedBeam = collisionObjects[i].getAttr('rotaryBeam').image;
+                
+                if (!isFlatButtonPressed) {
+                    var rotatedBeam = collisionObjects[i].getAttr('rotaryBeam');
+                    rotatedBeam.rotateBeam();
+                    isFlatButtonPressed = true;
+                }
                 //if (angleOfRotation<180) {
                 //    collisionObjects[i].getAttr('rotaryBeam').image.rotate(-1);
                 //    angleOfRotation++;
@@ -122,7 +119,8 @@ function goBabyGo() {
                 //    //collisionObjects[i].getAttr('rotaryBeam').image.setHeight(25);
 
                 //}
-                isFlatButtonPressed = true;
+                
+
             }
 
             else if (objectName === 'line') {
@@ -155,22 +153,29 @@ function goBabyGo() {
 
 function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one rectangle, while the object variables belong to another rectangle
     var oTop = object.getY();
+    var oLeft = object.getX();
+    var oRight = oLeft + object.getWidth();
+    var oBottom = oTop + object.getHeight();
+    
     if (object.getName() === 'spring') {
         oTop = oTop + 122 - object.getHeight();
     }
     if (object.getName() === 'line') {
         oTop = oTop + 15;
     }
+    if (object.getName() === 'rotaryBeam') {
+        oLeft = object.getAttr('rotatedX') - 30;
+        oRight = oLeft + object.getHeight();
+        oBottom = oTop + object.getWidth();
+    }
 
-    var oLeft = object.getX();
 
-    var oRight = oLeft + object.getWidth();
-    var oBottom = oTop + object.getHeight();
     //if (object.getName() === 'rotaryBeam') {
-    //    oTop = 220;
-    //    oLeft = 425;
-    //    oRight = 245;
-    //    oBottom = 558;
+    //    console.log('ho');
+        //    oTop = 220;
+        //    oLeft = 425;
+        //    oRight = 245;
+        //    oBottom = 558;
     //}
     if (pointX >= oLeft && pointX <= oRight) {
         if (pointY >= oTop && pointY <= oBottom) {
