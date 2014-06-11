@@ -64,31 +64,52 @@
     <Content Include="Resources\AssemblyLineSprite.png" />
     <Content Include="Resources\backgroundLavel1Day.png" />
     <Content Include="Resources\backgroundLavel1Night.png" />
+    <Content Include="Resources\backgroundLavel2Night.png" />
+    <Content Include="Resources\beamLevel1.png" />
+    <Content Include="Resources\beamLevel2.png" />
     <Content Include="Resources\button-hover.png" />
     <Content Include="Resources\button-mousedown.png" />
     <Content Include="Resources\button.png" />
+    <Content Include="Resources\CasperTitle.png" />
     <Content Include="Resources\ControlLever.png" />
     <Content Include="Resources\flatButton.png" />
     <Content Include="Resources\GhostSprites.png" />
+    <Content Include="Resources\Handle.png" />
+    <Content Include="Resources\HandleLevel1.png" />
+    <Content Include="Resources\korpus.png" />
+    <Content Include="Resources\rachka-click.png" />
+    <Content Include="Resources\Sparks.png" />
     <Content Include="Resources\spring.png" />
+    <Content Include="Resources\tubeLevel1Left.png" />
+    <Content Include="Resources\tubeLevel1Right.png" />
     <Content Include="Scripts\AssemblyLine.js" />
     <Content Include="Scripts\button.js" />
+    <Content Include="Scripts\CasperEnemy.js" />
     <Content Include="Scripts\CasperObject.js" />
     <Content Include="Scripts\ControlLever.js" />
     <Content Include="Scripts\Engine.js" />
     <Content Include="Scripts\flatButton.js" />
     <Content Include="Scripts\GameLoader.js" />
+    <Content Include="Scripts\handle.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\kinetic-v5.1.0.min.js" />
     <Content Include="Scripts\Levels.js" />
+    <Content Include="Scripts\printScore.js" />
+    <Content Include="Scripts\raphael-min.js" />
+    <Content Include="Scripts\rotaryBeam.js" />
+    <Content Include="Scripts\SampleCasperEnemy.js" />
+    <Content Include="Scripts\spark.js" />
     <Content Include="Scripts\spring.js" />
     <Content Include="TestCollisions.html" />
+    <Content Include="TestLevel2.html" />
+    <Content Include="TestScoreBoard.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\osnovaHonover.psd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
