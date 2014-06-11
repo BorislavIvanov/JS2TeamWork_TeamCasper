@@ -99,6 +99,8 @@
     <Content Include="Scripts\rotaryBeam.js" />
     <Content Include="Scripts\SampleCasperEnemy.js" />
     <Content Include="Scripts\spark.js" />
+    <Content Include="Scripts\Menu.js" />
+    <Content Include="Scripts\raphael-min.js" />
     <Content Include="Scripts\spring.js" />
     <Content Include="TestCollisions.html" />
     <Content Include="TestLevel2.html" />
