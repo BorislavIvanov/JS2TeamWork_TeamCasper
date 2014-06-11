@@ -1,4 +1,7 @@
-﻿/// <reference path="rotaryBeam.js" />
+﻿/// <reference path="spring.js" />
+/// <reference path="tubes.js" />
+/// <reference path="tubes.js" />
+/// <reference path="rotaryBeam.js" />
 
 
 
@@ -22,7 +25,7 @@ function loadLevel(levelNumber) {
     initialScore = createCountDown(level.initialScore);
     $.getScript('Scripts/printScore.js',
         function () {
-            scoreBox = new scoreBox(45, 480, Math.floor(initialScore()/1000), objLayer, stage);
+            scoreBox = new scoreBox(45, 480, Math.floor(initialScore() / 1000), objLayer, stage);
         }
     );
 }
@@ -44,7 +47,7 @@ function objectsBiulder(object, objLeyer) {
                 y: object.y,
                 width: object.width,
                 height: object.height,
-                fill: 'orange'
+                fill: 'transparent'
             });
             objLeyer.add(rect);
             collisionObjects.push(rect);
@@ -91,9 +94,37 @@ function objectsBiulder(object, objLeyer) {
                         collisionObjects.push(ourFlatButtonImage);
                     });
                     collisionObjects.push(rotaryBeamImage);
-                }
-
-                )
+                });
+            break;
+        case 'leftTube':
+            var imageObj = new Image();
+            imageObj.onload = function () {
+                var leftTube = new Kinetic.Image({
+                    x: object.x,
+                    y: object.y,
+                    width: 75,
+                    hegith: 50,
+                    image: imageObj
+                })
+                objLeyer.add(leftTube);
+                stage.add(objLeyer);
+            }
+            imageObj.src = 'Resources/tubeLevel1Left.png';
+            break;
+        case 'rightTube':
+            var imageObj = new Image();
+            imageObj.onload = function () {
+                rightTube = new Kinetic.Image({
+                    x: object.x,
+                    y: object.y,
+                    width: 100,
+                    hegith: 50,
+                    image: imageObj
+                })
+                objLeyer.add(rightTube);
+                stage.add(objLeyer);
+            }
+            imageObj.src = 'Resources/tubeLevel1Right.png';
             break;
         default:
             break;

@@ -5,6 +5,7 @@ var rotatedBeam;
 var scoreBox;
 var initialScore;
 var playerScore;
+var rightTube;
 
 function scoreInput() {
     var inputForm = document.createElement('input');
@@ -16,6 +17,8 @@ function scoreInput() {
     label.style.fontSize = '22px';
     label.innerHTML = 'Your name';
     inputForm.type = 'text';
+    inputForm.style.width = '150px';
+    inputForm.style.height = '30px';
     inputForm.autofocus = true;
     inputForm.style.position = 'absolute';
     inputForm.style.backgroundColor = 'lightgray';
@@ -41,6 +44,10 @@ function scoreInput() {
             //});
         }
     })
+}
+
+function gameOver() {
+    scoreInput();
 }
 
 function createCountDown(timeRemaining) {

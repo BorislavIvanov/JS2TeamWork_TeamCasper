@@ -105,7 +105,9 @@ function Casper(x, y, layer, stage) {
                     if (++frameCounter > 12) {
                         blob.animation('dead');
                         frameCounter = 0;
-                        scoreInput();
+                        blob.stop();
+                        anim.stop();
+                        gameOver();
                     }
                 }
 

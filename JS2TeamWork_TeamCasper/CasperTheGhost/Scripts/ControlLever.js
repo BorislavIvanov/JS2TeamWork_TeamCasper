@@ -42,7 +42,7 @@ function ControlLever(x, y, layer, stage) {
                 frameRate: 10,
                 frameIndex: 0
             });
-            
+
             layer.add(leverAnimation);
             stage.add(layer);
             leverAnimation.start();
@@ -50,8 +50,8 @@ function ControlLever(x, y, layer, stage) {
             var frameCount = 0;
 
             //On click animation
-            leverAnimation.on('frameIndexChange', function (evt) {
 
+            leverAnimation.on('frameIndexChange', function (evt) {
                 if (leverAnimation.animation() === 'movingLeverON') {
                     if (++frameCount > 5) {
                         leverAnimation.animation('switchedOn');
