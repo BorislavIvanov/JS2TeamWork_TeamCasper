@@ -4,13 +4,15 @@ paper = Raphael(8, 8, 800, 600);
 
 paper.setStart();
 
-var pageFill = paper.rect(8, 8, 800, 600).attr({ fill: "rgb(225, 226, 202)" }).attr({ stroke: 'none' });
+var pageFill = paper.rect(8, 8, 800, 600).attr({ fill: "rgb(225, 226, 227)" }).attr({ stroke: 'none' });
+var pageBg = paper.image("../Resources/backgroundLevelW.png", 8,8,800,600).attr({opacity:0.2});
+
 var titleImage = paper.image("Resources/CasperTitle.png", 250, 215, 300, 90);
 
 var titleAnimaton = function () {
-    titleImage.animate({ "transform": "..r-360, 400,300" }, 5000, "bounce");
+    titleImage.animate({ "transform": "..r-360, 400,300" }, 20000, "elastic");
 };
-setTimeout(titleAnimaton, 2000);
+setTimeout(titleAnimaton, 500);
 
 var titlePage = paper.setFinish();
 
