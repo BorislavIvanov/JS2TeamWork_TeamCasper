@@ -88,6 +88,7 @@ function Casper(x, y, layer, stage) {
             });
             layer.add(blob);
             stage.add(layer);
+            layer.setZIndex(1);
             blob.start();
 
             var frameCounter = 0;

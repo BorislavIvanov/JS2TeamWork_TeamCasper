@@ -16,7 +16,6 @@ function Spring(x, y, layer, stage, id, rotation) {
                 y: y + 82,
                 width: 101,
                 height: 40,
-                rotation: rotation,
                 name: 'spring',
                 image: imageObj,
                 animation: 'idle',
@@ -40,24 +39,13 @@ function Spring(x, y, layer, stage, id, rotation) {
 
             layer.add(innerSpring);
             stage.add(layer);
-
-
-            //stage.add(layer);
-            // start sprite animation
             innerSpring.start();
 
             var frameCount = 0;
             innerSpring.on('frameIndexChange', function (evt) {
 
                 if (innerSpring.animation() === 'stretch') {
-                    //spring.height += 40;
-                    //if (frameCount===0) {
-                    //    gravity = -150;
-                    //}
-                    //if (frameCount===1) {
-                    //    gravity = 2;
-                    //}
-                    //spring.posY -= 40;
+                    
                     if (++frameCount > 3) {
                         innerSpring.animation('idle');
                         frameCount = 0;

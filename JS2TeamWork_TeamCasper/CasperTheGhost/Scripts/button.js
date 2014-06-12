@@ -19,6 +19,8 @@
 
             function checkForEvents(buttonImage) {
                 buttonImage.on('mousedown', function (evt) {
+
+                    imageObj.src = '../resources/button-mousedown.png';
                     var onSpring;
                     //for (var i = 0; i < s.inCollision.length; i++) {
                     //    console.log(s.inCollision[i].id);
@@ -34,8 +36,8 @@
                     if (onSpring) {
                         jump(1200);
                     }
-                    imageObj.src = '../resources/button-mousedown.png';
-                    //setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 200);
+
+                    setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 100);
                     //layer.removeChildren();
                     //layer.add(buttonImage);
                     spring.image.animation('stretch');

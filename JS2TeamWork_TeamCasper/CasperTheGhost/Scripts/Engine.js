@@ -195,14 +195,14 @@ function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one 
     if (object.getName() === 'spring') {
         oTop = oTop + 122 - object.getHeight();
     }
-    if (object.getName() === 'line') {
-        oTop = oTop + 15;
-    }
-    if (object.getName() === 'rotaryBeam') {
-        oLeft = object.getAttr('rotatedX') - 30;
-        oRight = oLeft + object.getHeight();
-        oBottom = oTop + object.getWidth();
-    }
+    //if (object.getName() === 'line') {
+    //    oTop = oTop + 15;
+    //}
+    //if (object.getName() === 'rotaryBeam') {
+    //    oLeft = object.getAttr('rotatedX') - 30;
+    //    oRight = oLeft + object.getHeight();
+    //    oBottom = oTop + object.getWidth();
+    //}
 
     if (pointX >= oLeft && pointX <= oRight) {
         if (pointY >= oTop && pointY <= oBottom) {

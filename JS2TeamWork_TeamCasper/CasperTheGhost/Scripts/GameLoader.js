@@ -47,7 +47,8 @@ function objectsBiulder(object, objLeyer) {
                 y: object.y,
                 width: object.width,
                 height: object.height,
-                fill: 'transparent'
+                //fill: 'transparent'
+                fill: 'orange'
             });
             objLeyer.add(rect);
             collisionObjects.push(rect);
@@ -55,10 +56,10 @@ function objectsBiulder(object, objLeyer) {
         case 'spring':
             $.getScript('Scripts/spring.js',
                 function () {
-                    var thisSpring = Spring(object.x, object.y, objLeyer, stage, object.id, object.rotation);
+                    var thisSpring = new Spring(object.x, object.y, objLeyer, stage, object.id, object.rotation);
                     var ourSpringImage = thisSpring.image;
                     $.getScript('Scripts/button.js', function () {
-                        var but = Button(object.button.x, object.button.y, objLeyer, stage, thisSpring);
+                        var but = new Button(object.button.x, object.button.y, objLeyer, stage, thisSpring);
                     });
                     collisionObjects.push(ourSpringImage);
                 });
@@ -103,12 +104,12 @@ function objectsBiulder(object, objLeyer) {
                     x: object.x,
                     y: object.y,
                     width: object.width,
-                    hegith: 50,
+                    heigth: 50,
                     image: imageObj
                 })
                 objLeyer.add(leftTube);
                 stage.add(objLeyer);
-                collisionObjects.push(leftTube);
+                //collisionObjects.push(leftTube);
             }
             imageObj.src = 'Resources/tubeLevel1Left.png';
             break;
@@ -119,7 +120,7 @@ function objectsBiulder(object, objLeyer) {
                     x: object.x,
                     y: object.y,
                     width: object.width,
-                    hegith: 50,
+                    heigth: 50,
                     image: imageObj
                 })
                 objLeyer.add(rightTube);
@@ -140,34 +141,33 @@ function objectsBiulder(object, objLeyer) {
                 })
                 objLeyer.add(korpus);
                 stage.add(objLeyer);
-                collisionObjects.push(korpus);
             }
             imageObj.src = 'Resources/korpus.png';
             break;
-        /*case 'translationBeam':
-            $.getScript('Scripts/translationBeam.js',
-                function () {
-                    var rotaryBeam = new beamLevelTwo(object.x, object.y, objLeyer, stage);
-                    var rotaryBeamImage = rotaryBeam.image;
-                    $.getScript('Scripts/ControlLever.js', function () {
-                        var ourControlLever = ControlLever(object.flatButton.x, object.flatButton.y, objLeyer, stage, rotaryBeam, false);
-                        var ourControlLeverImage = ourControlLever.image;
-                        collisionObjects.push(ourControlLeverImage);
+            /*case 'translationBeam':
+                $.getScript('Scripts/translationBeam.js',
+                    function () {
+                        var rotaryBeam = new beamLevelTwo(object.x, object.y, objLeyer, stage);
+                        var rotaryBeamImage = rotaryBeam.image;
+                        $.getScript('Scripts/ControlLever.js', function () {
+                            var ourControlLever = ControlLever(object.flatButton.x, object.flatButton.y, objLeyer, stage, rotaryBeam, false);
+                            var ourControlLeverImage = ourControlLever.image;
+                            collisionObjects.push(ourControlLeverImage);
+                        });
+                        collisionObjects.push(rotaryBeamImage);
                     });
-                    collisionObjects.push(rotaryBeamImage);
-                });
-            break;*/
+                break;*/
         case 'controlerLevel1':
             $.getScript('Scripts/ControlLever.js',
                 function () {
                     var thisControler = ControlLever(object.x, object.y, objLeyer, stage);
                     var ourControlerImage = thisControler.image;
                     $.getScript('Scripts/translationBeam.js', function () {
-                        var line = translationBeam(object.line.x, object.line.y, objLeyer, stage, 6, thisControler);
-                        collisionObjects.push(line.image);
+                        var beam = beamLevelOne(object.beam.x, object.beam.y, objLeyer, stage, ourControlerImage);
+                        collisionObjects.push(beam.image);
                     });
-                    ourControlerImage.rotate(180),
-                    collisionObjects.push(ourControlerImage);
+                    ourControlerImage.rotate(180)
+                    //collisionObjects.push(beamLevelOne);
                 });
             break;
         default:

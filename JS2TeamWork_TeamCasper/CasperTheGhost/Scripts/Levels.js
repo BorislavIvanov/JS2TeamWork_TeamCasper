@@ -10,7 +10,7 @@
                 id: 'spring1',
                 x: 415,
                 y: 275,
-                rotation: 5,
+                rotation: 10,
                 button:
                     { name: 'button', x: 550, y: 450 }
             },
@@ -22,23 +22,14 @@
             },
             {
                 name: 'rightTube',
-                x: 735,
+                x: 734,
                 y: 188,
-                width: 84
+                width: 110
             },
-            { name: 'rect', x: 500, y: 280, width: 20, height: 210 },
             { name: 'rect', x: 0, y: 416, width: 410, height: 20 },
+            { name: 'rect', x: 500, y: 280, width: 20, height: 210 },
             { name: 'rect', x: 500, y: 280, width: 400, height: 20 },
-            {
-                name: 'leftTube',
-                x: 0,
-                y: 326,
-            },
-            {
-                name: 'rightTube',
-                x: 736,
-                y: 190,
-            },
+
             {
                 name: 'korpus',
                 x: 223,
@@ -48,8 +39,8 @@
                 name: 'controlerLevel1',
                 x: 215,
                 y: 250,
-                line:
-                    { name: 'line', x: 200, y: 400 }
+                beam:
+                    { name: 'beam', x: 240, y:7 }
             },
            /* {
                 name: 'translationBeam',
