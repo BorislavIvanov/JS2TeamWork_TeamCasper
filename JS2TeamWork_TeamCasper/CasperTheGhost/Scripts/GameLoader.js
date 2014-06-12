@@ -56,7 +56,7 @@ function objectsBiulder(object, objLeyer) {
             $.getScript('Scripts/spring.js',
                 function () {
                     var thisSpring = Spring(object.x, object.y, objLeyer, stage, object.id, object.rotation);
-                    var ourSpringImage = thisSpring.image.rotate(0);
+                    var ourSpringImage = thisSpring.image;
                     $.getScript('Scripts/button.js', function () {
                         var but = Button(object.button.x, object.button.y, objLeyer, stage, thisSpring);
                     });
@@ -102,7 +102,7 @@ function objectsBiulder(object, objLeyer) {
                 var leftTube = new Kinetic.Image({
                     x: object.x,
                     y: object.y,
-                    width: 75,
+                    width: object.width,
                     hegith: 50,
                     image: imageObj
                 })
@@ -117,7 +117,7 @@ function objectsBiulder(object, objLeyer) {
                 rightTube = new Kinetic.Image({
                     x: object.x,
                     y: object.y,
-                    width: 100,
+                    width: object.width,
                     hegith: 50,
                     image: imageObj
                 })

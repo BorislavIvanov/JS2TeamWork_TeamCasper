@@ -24,9 +24,9 @@
                     //    console.log(s.inCollision[i].id);
                     //}
                     for (var elementIndex in casper.inCollision) {
-                        var test = casper.inCollision[elementIndex].getId();
-                        if (test) {
-                            if (test == spring.image.getId()) {
+                        var collisionElement = casper.inCollision[elementIndex].getId();
+                        if (collisionElement) {
+                            if (collisionElement === spring.image.getId()) {
                                 onSpring = true;
                             }
                         }
@@ -35,7 +35,7 @@
                         jump(1200);
                     }
                     imageObj.src = '../resources/button-mousedown.png';
-                    setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 200);
+                    //setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 200);
                     //layer.removeChildren();
                     //layer.add(buttonImage);
                     spring.image.animation('stretch');

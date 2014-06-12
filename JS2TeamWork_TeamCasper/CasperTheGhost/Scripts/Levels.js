@@ -2,6 +2,7 @@
     //Level 1 Objects
     {
         background: 'backgroundLavel1Night.png',
+        initialScore: 300500,
         scriptsToLoad: ['CasperObject.js', 'button.js', 'spring.js'],
         collisionObjects: [
             {
@@ -12,6 +13,18 @@
                 rotation: 5,
                 button:
                     { name: 'button', x: 550, y: 450 }
+            },
+            {
+                name: 'leftTube',
+                x: 0,
+                y: 327,
+                width: 83,
+            },
+            {
+                name: 'rightTube',
+                x: 735,
+                y: 188,
+                width: 84
             },
             { name: 'rect', x: 500, y: 280, width: 20, height: 210 },
             { name: 'rect', x: 0, y: 416, width: 410, height: 20 },
@@ -46,11 +59,13 @@
                 name: 'leftTube',
                 x: 0,
                 y: 132,
+                width: 75
             },
             {
                 name: 'rightTube',
                 x: 700,
                 y: 430,
+                width: 100,
             },
             { name: 'rect', x: 0, y: 220, width: 425, height: 20 },
             { name: 'rect', x: 560, y: 220, width: 47, height: 20 },
