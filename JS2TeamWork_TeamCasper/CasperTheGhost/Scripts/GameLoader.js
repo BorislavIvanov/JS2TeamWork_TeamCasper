@@ -108,6 +108,7 @@ function objectsBiulder(object, objLeyer) {
                 })
                 objLeyer.add(leftTube);
                 stage.add(objLeyer);
+                collisionObjects.push(leftTube);
             }
             imageObj.src = 'Resources/tubeLevel1Left.png';
             break;
@@ -122,9 +123,52 @@ function objectsBiulder(object, objLeyer) {
                     image: imageObj
                 })
                 objLeyer.add(rightTube);
+                collisionObjects.push(rightTube);
                 stage.add(objLeyer);
             }
             imageObj.src = 'Resources/tubeLevel1Right.png';
+            break;
+        case 'korpus':
+            var imageObj = new Image();
+            imageObj.onload = function () {
+                var korpus = new Kinetic.Image({
+                    x: object.x,
+                    y: object.y,
+                    width: 50,
+                    height: 27,
+                    image: imageObj
+                })
+                objLeyer.add(korpus);
+                stage.add(objLeyer);
+                collisionObjects.push(korpus);
+            }
+            imageObj.src = 'Resources/korpus.png';
+            break;
+        /*case 'translationBeam':
+            $.getScript('Scripts/translationBeam.js',
+                function () {
+                    var rotaryBeam = new beamLevelTwo(object.x, object.y, objLeyer, stage);
+                    var rotaryBeamImage = rotaryBeam.image;
+                    $.getScript('Scripts/ControlLever.js', function () {
+                        var ourControlLever = ControlLever(object.flatButton.x, object.flatButton.y, objLeyer, stage, rotaryBeam, false);
+                        var ourControlLeverImage = ourControlLever.image;
+                        collisionObjects.push(ourControlLeverImage);
+                    });
+                    collisionObjects.push(rotaryBeamImage);
+                });
+            break;*/
+        case 'controlerLevel1':
+            $.getScript('Scripts/ControlLever.js',
+                function () {
+                    var thisControler = ControlLever(object.x, object.y, objLeyer, stage);
+                    var ourControlerImage = thisControler.image;
+                    $.getScript('Scripts/translationBeam.js', function () {
+                        var line = translationBeam(object.line.x, object.line.y, objLeyer, stage, 6, thisControler);
+                        collisionObjects.push(line.image);
+                    });
+                    ourControlerImage.rotate(180),
+                    collisionObjects.push(ourControlerImage);
+                });
             break;
         default:
             break;
