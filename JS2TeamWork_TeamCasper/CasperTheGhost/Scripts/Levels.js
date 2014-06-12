@@ -28,7 +28,34 @@
             },
             { name: 'rect', x: 500, y: 280, width: 20, height: 210 },
             { name: 'rect', x: 0, y: 416, width: 410, height: 20 },
-            { name: 'rect', x: 500, y: 280, width: 400, height: 20 }
+            { name: 'rect', x: 500, y: 280, width: 400, height: 20 },
+            {
+                name: 'leftTube',
+                x: 0,
+                y: 326,
+            },
+            {
+                name: 'rightTube',
+                x: 736,
+                y: 190,
+            },
+            {
+                name: 'korpus',
+                x: 223,
+                y: 0,
+            },
+            {
+                name: 'controlerLevel1',
+                x: 215,
+                y: 250,
+                line:
+                    { name: 'line', x: 200, y: 400 }
+            },
+           /* {
+                name: 'translationBeam',
+                x: 232,
+                y: -64,
+            },*/
         ],
     },
     //Level 2 Objects
