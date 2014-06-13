@@ -1,35 +1,25 @@
 ﻿var paper, set;
-var levelNumber = 1;
+var levelNumber=1;
 paper = Raphael(8, 8, 800, 600);
 
+/* start page */
 paper.setStart();
-
 var pageFill = paper.rect(8, 8, 800, 600).attr({ fill: "rgb(225, 226, 227)" }).attr({ stroke: 'none' });
-<<<<<<< origin/master
-var pageBg = paper.image("../Resources/backgroundLevelW.png", 8,8,800,600).attr({opacity:0.2});
-
-var titleImage = paper.image("Resources/CasperTitle.png", 250, 215, 300, 90);
-
-var titleAnimaton = function () {
-    titleImage.animate({ "transform": "..r-360, 400,300" }, 20000, "elastic");
-=======
-var pageBg = paper.image("../Resources/backgroundLevelW.png", 8, 8, 800, 600).attr({ opacity: 0.4 });
+var pageBg = paper.image("../Resources/backgroundLevelW.png", 8,8,800,600).attr({opacity:0.4});
 var titleImage = paper.image("Resources/CasperTitle.png", 250, 125, 300, 90);
 
 var titleAnimaton = function () {
-    titleImage.attr({ y: '145' });
+    titleImage.attr({y:'145'});
     titleImage.animate({ "transform": "..r-360, 400,300" }, 20000, "elastic");
-    titleImage.attr({ y: '125' });
->>>>>>> local
+    titleImage.attr({y:'125'});
 };
 setTimeout(titleAnimaton, 500);
-
 var titlePage = paper.setFinish();
 
-
+/* Play button*/
 /* a rectangle with a linear gradient from light-green via green (at 50%) to light-green */
-var playShape = paper.rect(325, 55, 120, 70, 35, 45).attr({ fill: "90-#efe-#0d0:50-#6d8", "stroke-width": 5, stroke: "lightgreen" });
-var playText = paper.text(386, 88, "PLAY");
+var playShape = paper.rect(325, 50, 120, 46, 25, 35).attr({ fill: "90-#efe-#0d0:50-#6d8", "stroke-width": 5, stroke: "yellowgreen" });
+var playText = paper.text(386, 72, "PLAY");
 playText.attr({ "font-family": "Comic Sans MS", "font-size": 32, "font-weight": "800", fill: "yellow", stroke: "brown", "stroke-width": "3px" });
 
 /* group both the button and the text in a single Set shape we call playButton */
@@ -38,14 +28,9 @@ playButton.push(playShape);
 playButton.push(playText);
 playButton.attr({ cursor: "pointer" });
 
-<<<<<<< origin/master
-/*  F U N C T I O N S   */
-/* add a hover handler */
-playButton.mouseover(function(evt){
-=======
 /* Go level button */
 var levelShape = paper.rect(600, 350, 176, 40, 15, 20).attr({ fill: "90-#eee-#888:50-#444", "stroke-width": 3, stroke: "lightgrey" });
-var levelText = paper.text(688, 370, "");
+var levelText = paper.text(688, 370,"");
 if (levelNumber === 1) {
     levelText.attr({ text: 'GO LEVEL2' });
 } else {
@@ -69,30 +54,25 @@ endButton.attr({ cursor: "pointer" });
 
 /*  F U N C T I O N S   */
 /* playButton - add hover/click handlers */
-playButton.mouseover(function (evt) {
->>>>>>> local
+playButton.mouseover(function(evt){
     this.oGlow = playShape.glow({
         opacity: 0.85,
         color: 'lime',
-        width: 100
+        width: 70
     }); playShape.attr({ fill: "darkgreen" });
 }).mouseout(function (evt) {
     this.oGlow.remove(); playShape.attr({ fill: "90-#efe-#0d0:50-#6d8" });
 });
 
-/* add a click handler */
 playButton.click(function (evt) {
     titlePage.remove();
     playButton.hide();
     loadLevel(levelNumber);
+    levelButton.show();
 });
 
-<<<<<<< origin/master
-
-
-=======
 /* levelButton - add hover/click handlers */
-levelButton.mouseover(function (event) {
+levelButton.mouseover(function(event){
     this.oGlow = levelShape.glow({
         opacity: 0.85,
         color: 'cyan',
@@ -111,16 +91,15 @@ levelButton.click(function (event) {
         newLevelNumber = 1;
         levelText.attr({ text: 'GO LEVEL2' });
     }
-
+    
     playButton.hide();
 
-    stage = new Kinetic.Stage({
-        container: 'canvas-container',
-        width: 800,
-        height: 600
-    });
-
+     stage = new Kinetic.Stage({
+         container: 'canvas-container',
+         width: 800,
+         height: 600
+     });
+    
     loadLevel(newLevelNumber);
     levelNumber = newLevelNumber;
 });
->>>>>>> local
