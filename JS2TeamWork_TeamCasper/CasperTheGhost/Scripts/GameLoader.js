@@ -118,6 +118,7 @@ function objectsBiulder(object, objLeyer) {
             var imageObj = new Image();
             imageObj.onload = function () {
                 rightTube = new Kinetic.Image({
+                    name: object.name,
                     x: object.x,
                     y: object.y,
                     width: object.width,

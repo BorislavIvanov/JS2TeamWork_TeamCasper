@@ -5,7 +5,7 @@ showMenu();
 
 
 function showMenu() {
-    paper = Raphael(8, 8, 800, 600);
+    paper = new Raphael(8, 8, 800, 600);
     paper.setStart();
 
     var pageFill = paper.rect(8, 8, 800, 600).attr({ fill: "rgb(225, 226, 227)" }).attr({ stroke: 'none' });
@@ -55,6 +55,9 @@ function showMenu() {
 
     /* add a click handler */
     playButton.click(function(evt) {
+        if (playing) {
+            levelNumber += 1;
+        }
         playing = true;
         titlePage.remove();
         playButton.hide();
