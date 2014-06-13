@@ -28,7 +28,6 @@ function loadLevel(levelNumber) {
             scoreBox = new scoreBox(45, 480, Math.floor(initialScore() / 1000), objLayer, stage);
         }
     );
-    
 }
 
 
@@ -118,7 +117,6 @@ function objectsBiulder(object, objLeyer) {
             var imageObj = new Image();
             imageObj.onload = function () {
                 rightTube = new Kinetic.Image({
-                    name: object.name,
                     x: object.x,
                     y: object.y,
                     width: object.width,
@@ -140,9 +138,7 @@ function objectsBiulder(object, objLeyer) {
                     width: 50,
                     height: 27,
                     image: imageObj
-                    
-                });
-                
+                })
                 objLeyer.add(korpus);
                 stage.add(objLeyer);
             }

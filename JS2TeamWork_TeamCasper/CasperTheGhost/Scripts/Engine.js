@@ -7,8 +7,6 @@ var initialScore;
 var playerScore;
 var rightTube;
 
-
-
 function scoreInput() {
     var inputForm = document.createElement('input');
     var label = document.createElement('label');
@@ -128,19 +126,6 @@ function goBabyGo() {
             casper.speed = 0;
             casper.image.setX(collisionObjects[i].getX() - 100);
             inCollision.push(collisionObjects[i]);
-            if (collisionObjects[i].getName() == 'rightTube') {
-                stage = new Kinetic.Stage({
-                    container: 'canvas-container',
-                    width: 800,
-                    height: 600
-                });
-                casper = undefined;
-                collisionObjects = [];
-                showMenu();
-            }
-
-
-
         } else {
             if (casper.direction !== 'die') {
                 if (casper.speed <= 2) {

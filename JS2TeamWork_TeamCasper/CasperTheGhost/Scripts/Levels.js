@@ -31,17 +31,16 @@
             { name: 'rect', x: 500, y: 280, width: 400, height: 20 },
 
             {
+                name: 'korpus',
+                x: 223,
+                y: 0,
+            },
+            {
                 name: 'controlerLevel1',
                 x: 215,
                 y: 250,
                 beam:
                     { name: 'beam', x: 240, y:7 }
-            },
-
-            {
-                name: 'korpus',
-                x: 223,
-                y: 0,
             },
            /* {
                 name: 'translationBeam',
