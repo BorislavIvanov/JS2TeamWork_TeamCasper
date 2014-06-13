@@ -44,8 +44,8 @@ levelButton.attr({ cursor: "pointer" });
 levelButton.hide();
 
 /* Game End button */
-var endShape = paper.rect(670, 520, 96, 44, 27, 40).attr({ fill: "90-#fee-#d00:50-#d68", "stroke-width": 5, stroke: "brown" });
-var endText = paper.text(718, 540, "END");
+var endShape = paper.rect(645, 515, 96, 44, 27, 40).attr({ fill: "90-#fee-#d00:50-#d68", "stroke-width": 5, stroke: "brown" });
+var endText = paper.text(693, 535, "END");
 endText.attr({ "font-family": "Comic Sans MS", "font-size": 28, "font-weight": "800", fill: "yellow", stroke: "brown", "stroke-width": "3px" });
 var endButton = paper.set();
 endButton.push(endShape);
@@ -72,7 +72,7 @@ playButton.click(function (evt) {
 });
 
 /* levelButton - add hover/click handlers */
-levelButton.mouseover(function(event){
+levelButton.mouseover(function(evt){
     this.oGlow = levelShape.glow({
         opacity: 0.85,
         color: 'cyan',
@@ -84,6 +84,7 @@ levelButton.mouseover(function(event){
 
 var newLevelNumber = levelNumber;
 levelButton.click(function (event) {
+    this.oGlow.remove();
     if (levelNumber === 1) {
         newLevelNumber = 2;
         levelText.attr({ text: 'GO LEVEL1' });
@@ -102,4 +103,22 @@ levelButton.click(function (event) {
     
     loadLevel(newLevelNumber);
     levelNumber = newLevelNumber;
+});
+
+//  endButton - add hover/click handlers
+endButton.mouseover(function (evt) {
+    this.oGlow = endShape.glow({
+        opacity: 0.85,
+        color: 'lightgrey',
+        width: 70
+    }); endShape.attr({ fill: "purple" });
+}).mouseout(function (evt) {
+    this.oGlow.remove(); endShape.attr({ fill: "90-#fee-#d00:50-#d68" });
+});
+
+endButton.click(function (evt) {
+    titlePage.remove();
+    endButton.hide();
+    levelButton.hide();
+//    levelButton.show();
 });
