@@ -7,6 +7,8 @@ var initialScore;
 var playerScore;
 var rightTube;
 
+
+
 function scoreInput() {
     var inputForm = document.createElement('input');
     var label = document.createElement('label');

@@ -28,6 +28,7 @@ function loadLevel(levelNumber) {
             scoreBox = new scoreBox(45, 480, Math.floor(initialScore() / 1000), objLayer, stage);
         }
     );
+    
 }
 
 
@@ -138,7 +139,9 @@ function objectsBiulder(object, objLeyer) {
                     width: 50,
                     height: 27,
                     image: imageObj
-                })
+                    
+                });
+                
                 objLeyer.add(korpus);
                 stage.add(objLeyer);
             }
