@@ -113,7 +113,9 @@ var isFlatButtonPressed = false;
 var angleOfRotation = 1;
 function goBabyGo() {
     playerScore = Math.floor(initialScore() / 1000);
-    scoreBox.setAttr('text', playerScore);
+    if (scoreBox) {
+        scoreBox.setAttr('text', playerScore);
+    }
     var inCollision = [];
     var casperX = casper.image.getX();
     var casperY = casper.image.getY();
@@ -190,19 +192,20 @@ function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one 
     var oTop = object.getY();
     var oLeft = object.getX();
     var oRight = oLeft + object.getWidth();
-    var oBottom = oTop + object.getHeight();
+
 
     if (object.getName() === 'spring') {
         oTop = oTop + 122 - object.getHeight();
     }
-    //if (object.getName() === 'line') {
-    //    oTop = oTop + 15;
-    //}
-    //if (object.getName() === 'rotaryBeam') {
-    //    oLeft = object.getAttr('rotatedX') - 30;
-    //    oRight = oLeft + object.getHeight();
-    //    oBottom = oTop + object.getWidth();
-    //}
+    if (object.getName() === 'line') {
+        oTop = oTop + 15;
+    }
+    var oBottom = oTop + object.getHeight();
+    if (object.getName() === 'rotaryBeam') {
+        oLeft = object.getAttr('rotatedX') - 30;
+        oRight = oLeft + object.getHeight();
+        oBottom = oTop + object.getWidth();
+    }
 
     if (pointX >= oLeft && pointX <= oRight) {
         if (pointY >= oTop && pointY <= oBottom) {
