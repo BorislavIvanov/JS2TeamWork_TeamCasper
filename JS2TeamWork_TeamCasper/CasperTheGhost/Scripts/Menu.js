@@ -97,7 +97,7 @@ function playGame(levelNumber) {
 
         loadLevel(newLevelNumber);
 
-        casper.inCollision.splice(0, inCollision.length - 1);
+        //casper.inCollision.splice(0, inCollision.length - 1);
     });
 
 }
@@ -133,7 +133,7 @@ function displayScores() {
     /* Current scores display */
     var currentTimeRemaining = createCountDown(level.initialScore);
     var timeShape = paper.rect(30, 8, 88, 40, 5, 8).attr({ fill: "yellowgreen"});
-    var timeShapeText = paper.text(74, 28, 'TIME:'+currentTimeRemaining);
+    var timeShapeText = paper.text(74, 28, 'TIME:');
     timeShapeText.attr({ "font-family": "Comic Sans MS", "font-size": 24, "font-weight": "800", fill: "cyan", stroke: "blue", "stroke-width": "2px" });
 
 
