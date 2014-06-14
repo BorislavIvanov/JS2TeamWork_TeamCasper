@@ -64,9 +64,11 @@
     <Content Include="Resources\AssemblyLineSprite.png" />
     <Content Include="Resources\backgroundLavel1Day.png" />
     <Content Include="Resources\backgroundLavel1Night.png" />
+    <Content Include="Resources\backgroundLevelW.png" />
     <Content Include="Resources\button-hover.png" />
     <Content Include="Resources\button-mousedown.png" />
     <Content Include="Resources\button.png" />
+    <Content Include="Resources\CasperTitle.png" />
     <Content Include="Resources\ControlLever.png" />
     <Content Include="Resources\flatButton.png" />
     <Content Include="Resources\GhostSprites.png" />
@@ -81,6 +83,8 @@
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\kinetic-v5.1.0.min.js" />
     <Content Include="Scripts\Levels.js" />
+    <Content Include="Scripts\Menu.js" />
+    <Content Include="Scripts\raphael-min.js" />
     <Content Include="Scripts\spring.js" />
     <Content Include="TestCollisions.html" />
     <Content Include="Web.config" />

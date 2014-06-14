@@ -53,7 +53,7 @@ function gameOver() {
 function createCountDown(timeRemaining) {
     var startTime = Date.now();
     return function () {
-        return timeRemaining - (Date.now() - startTime);
+        return ((timeRemaining - (Date.now() - startTime))>0)?((timeRemaining - (Date.now() - startTime))):0;
     }
 }
 
