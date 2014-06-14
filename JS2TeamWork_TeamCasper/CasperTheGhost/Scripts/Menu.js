@@ -7,8 +7,8 @@ function initGame() {
 
     /* start page */
     paper.setStart();
-    var pageFill = paper.rect(0,0, 800, 600).attr({ fill: "rgb(225, 226, 227)" }).attr({ stroke: 'none' });
-    var pageBg = paper.image("../Resources/backgroundLevelW.png", 0,0, 800, 600).attr({ opacity: 0.4 });
+    var pageFill = paper.rect(0, 0, 800, 600).attr({ fill: "rgb(225, 226, 227)" }).attr({ stroke: 'none' });
+    var pageBg = paper.image("../Resources/backgroundLevelW.png", 0, 0, 800, 600).attr({ opacity: 0.4 });
     var titleImage = paper.image("Resources/CasperTitle.png", 250, 125, 300, 90);
 
     var titleAnimaton = function () {
@@ -54,12 +54,12 @@ function playGame(levelNumber) {
     var newLevelNumber = currentLevel;
 
     /* Go level button */
-    var levelShape = paper.rect(470, 8, 176, 40, 15, 20).attr({ fill: "90-#eee-#888:50-#444", "stroke-width": 3, stroke: "lightgrey" });
-    var levelText = paper.text(560, 28,"");
+    var levelShape = paper.rect(375, 8, 200, 40, 15, 20).attr({ fill: "90-#eee-#888:50-#444", "stroke-width": 3, stroke: "lightgrey" });
+    var levelText = paper.text(475, 28, "");
     if (currentLevel === 1) {
-        levelText.attr({ text: 'GO LEVEL2' });
+        levelText.attr({ text: 'GO LEVEL 2' });
     } else {
-        levelText.attr({ text: 'GO LEVEL1' });
+        levelText.attr({ text: 'GO LEVEL 1' });
     }
     levelText.attr({ "font-family": "Comic Sans MS", "font-size": 28, "font-weight": "800", fill: "darkblue", stroke: "cyan", "stroke-width": "2px" });
     var levelButton = paper.set();
@@ -68,7 +68,7 @@ function playGame(levelNumber) {
     levelButton.attr({ cursor: "pointer" });
 
     /* levelButton - add hover/click handlers */
-    levelButton.mouseover(function(evt){
+    levelButton.mouseover(function (evt) {
         this.oGlow = levelShape.glow({
             opacity: 0.85,
             color: 'cyan',
@@ -89,23 +89,21 @@ function playGame(levelNumber) {
         }
         currentLevel = newLevelNumber;
 
-        //stage = new Kinetic.Stage({
-        //    container: 'canvas-container',
-        //    width: 800,
-        //    height: 600
-        //});
+        stage = new Kinetic.Stage({
+            container: 'canvas-container',
+            width: 800,
+            height: 600
+        });
 
         loadLevel(newLevelNumber);
-
-        //casper.inCollision.splice(0, inCollision.length - 1);
     });
 
 }
 
 function gameEnd() {
     /* Game End button */
-    var endShape = paper.rect(675, 8, 96, 40, 27, 40).attr({ fill: "90-#fee-#d00:50-#d68", "stroke-width": 5, stroke: "brown" });
-    var endText = paper.text(723, 28, "END");
+    var endShape = paper.rect(642, 8, 96, 40, 27, 40).attr({ fill: "90-#fee-#d00:50-#d68", "stroke-width": 5, stroke: "brown" });
+    var endText = paper.text(690, 28, "END");
     endText.attr({ "font-family": "Comic Sans MS", "font-size": 28, "font-weight": "800", fill: "yellow", stroke: "brown", "stroke-width": "3px" });
     var endButton = paper.set();
     endButton.push(endShape);
@@ -125,7 +123,9 @@ function gameEnd() {
 
     endButton.click(function (evt) {
         endButton.hide();
-//        playerScores(totalScores);
+        layerButton.hide();
+        playerScores(totalScores);
+
     });
 }
 
