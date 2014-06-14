@@ -122,9 +122,7 @@ function gameEnd() {
     });
 
     endButton.click(function (evt) {
-        endButton.hide();
-        layerButton.hide();
-        playerScores(totalScores);
+        window.close();
 
     });
 }
