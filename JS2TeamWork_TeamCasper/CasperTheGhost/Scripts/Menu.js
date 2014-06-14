@@ -89,11 +89,11 @@ function playGame(levelNumber) {
         }
         currentLevel = newLevelNumber;
 
-        stage = new Kinetic.Stage({
-            container: 'canvas-container',
-            width: 800,
-            height: 600
-        });
+        //stage = new Kinetic.Stage({
+        //    container: 'canvas-container',
+        //    width: 800,
+        //    height: 600
+        //});
 
         loadLevel(newLevelNumber);
 

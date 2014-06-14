@@ -8,6 +8,7 @@
 function loadLevel(levelNumber) {
     clearLevel();
     var level = levels[levelNumber - 1]; //from Levels.js
+    currentLevel = levelNumber;
     assebliesLoad(level.scriptsToLoad);
 
     $.getScript('Scripts/CasperObject.js',
