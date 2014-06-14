@@ -97,9 +97,12 @@ function playGame(levelNumber) {
 
         loadLevel(newLevelNumber);
 
-        casper.inCollision.splice(0, inCollision.length-1); 
+        casper.inCollision.splice(0, inCollision.length - 1);
     });
 
+}
+
+function gameEnd() {
     /* Game End button */
     var endShape = paper.rect(675, 8, 96, 40, 27, 40).attr({ fill: "90-#fee-#d00:50-#d68", "stroke-width": 5, stroke: "brown" });
     var endText = paper.text(723, 28, "END");
@@ -108,7 +111,7 @@ function playGame(levelNumber) {
     endButton.push(endShape);
     endButton.push(endText);
     endButton.attr({ cursor: "pointer" });
-    
+
     //  endButton - add hover/click handlers
     endButton.mouseover(function (evt) {
         this.oGlow = endShape.glow({
@@ -121,9 +124,26 @@ function playGame(levelNumber) {
     });
 
     endButton.click(function (evt) {
-
         endButton.hide();
-
+        displayScores();
     });
 }
+
+function displayScores() {
+    /* Current scores display */
+    var currentTimeRemaining = createCountDown(level.initialScore);
+    var timeShape = paper.rect(30, 8, 88, 40, 5, 8).attr({ fill: "yellowgreen"});
+    var timeShapeText = paper.text(74, 28, 'TIME:'+currentTimeRemaining);
+    timeShapeText.attr({ "font-family": "Comic Sans MS", "font-size": 24, "font-weight": "800", fill: "cyan", stroke: "blue", "stroke-width": "2px" });
+
+
+    
+ //   var timeText = paper.text(210, 8, 'alabala');
+ //   timeText.attr({ "font-family": "Consolas", "font-size": 24, "font-weight": "800", fill: "red", stroke: "brown", "stroke-width": "2px" });
+
+
+
+}
+
+
 
