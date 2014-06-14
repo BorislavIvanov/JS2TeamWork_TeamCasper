@@ -8,12 +8,14 @@
 function loadLevel(levelNumber) {
     clearLevel();
     var level = levels[levelNumber - 1]; //from Levels.js
+    currentLevel = levelNumber;
     assebliesLoad(level.scriptsToLoad);
 
     $.getScript('Scripts/CasperObject.js',
         function () {
             var caserLayer = new Kinetic.Layer();
-            casper = Casper(100, 100, caserLayer, stage);
+            casper = Casper(level.casperX, level.casperY, caserLayer, stage);
+            casper.move('right');
         }
     );
     loadBackground(level.background);
@@ -48,7 +50,7 @@ function objectsBiulder(object, objLeyer) {
                 width: object.width,
                 height: object.height,
                 //fill: 'transparent'
-                fill: 'orange'
+                fill: 'transparent'
             });
             objLeyer.add(rect);
             collisionObjects.push(rect);

@@ -6,7 +6,7 @@ function Casper(x, y, layer, stage) {
     var casper = {
         posX: x,
         posY: y,
-        direction: 'idle',
+        direction: 'right',
         multi: 0,
         speed: 2,
         inCollision: [],
@@ -19,7 +19,7 @@ function Casper(x, y, layer, stage) {
                 x: x,
                 y: y,
                 image: imageObj,
-                animation: 'idle',
+                animation: 'right',
                 animations: {
                     idle: [
                         0, 200, 100, 100,
@@ -117,6 +117,15 @@ function Casper(x, y, layer, stage) {
                     blob.animation(casper.direction);
                 }
             }, false);
+
+            blob.on('click', function () {
+                if (casper.direction == 'right') {
+                    casper.move('idle');
+                } else {
+                    casper.move('right');
+                }
+                
+            });
             return blob;
         })(x, y),
         move: function (newDirection) {

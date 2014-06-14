@@ -5,7 +5,10 @@ var rotatedBeam;
 var scoreBox;
 var initialScore;
 var playerScore;
+var overallScore = 0;
 var rightTube;
+var currentLevel;
+
 
 function scoreInput() {
     var inputForm = document.createElement('input');
@@ -32,11 +35,12 @@ function scoreInput() {
         if (ev.keyCode === 13) {
             var currentData = {
                 name: inputForm.value,
-                score: scoreBox.getAttr('text')
-            }
-            saveToScoreBoard(currentData)
+                score: overallScore
+            };
+            saveToScoreBoard(currentData);
             inputForm.parentNode.removeChild(inputForm);
             label.parentNode.removeChild(label);
+            playerScores(JSON.parse(localStorage.getItem('CasperScoreBoard')).scores);
             //stage = new Kinetic.Stage({
             //    container: 'canvas-container',
             //    width: 800,
@@ -93,8 +97,13 @@ function playerScores(totalScores) {
 }
 
 function gameOver() {
+    
+    
+    casper.image.off('frameIndexChange');
+    casper.image.stop();
+    casper.move('idle');
     scoreInput();
-	playerScores();
+	
 }
 
 function createCountDown(timeRemaining) {
@@ -156,6 +165,22 @@ function outOfField(x, y) {
 
 }
 
+function levelOver() {
+    
+    initialScore = function () {
+        return parseInt(scoreBox.getAttr('text')) * 1000;
+    };
+
+
+    overallScore += parseInt(scoreBox.getAttr('text'));
+    if (currentLevel >= levels.length) {
+        gameOver();
+        return;
+    }
+    loadLevel(currentLevel + 1);
+}
+
+
 var isFlatButtonPressed = false;
 var angleOfRotation = 1;
 function goBabyGo() {
@@ -164,74 +189,86 @@ function goBabyGo() {
         scoreBox.setAttr('text', playerScore);
     }
     var inCollision = [];
+    
+    if (!casper) { return; }
+    
     var casperX = casper.image.getX();
     var casperY = casper.image.getY();
     outOfField(casperX, casperY);
 
-    for (var i = 0; i < collisionObjects.length; i++) {
-        if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
-            casper.speed = 0;
-            casper.image.setX(collisionObjects[i].getX() - 100);
-            inCollision.push(collisionObjects[i]);
-        } else {
-            if (casper.direction !== 'die') {
-                if (casper.speed <= 2) {
-                    casper.speed += 0.03;
-                }
-            }
+    if (casper) {
 
-        }
+        for (var i = 0; i < collisionObjects.length; i++) {
 
-        if (checkCollide(casperX + 50, casperY + 100, collisionObjects[i])) {
-            var objectName = collisionObjects[i].getName();
-            if (collisionObjects[i].getAttr('casperEnemy')) {
-                if (casper.image.animation() !== 'dead') {
-                    casper.move('die');
-                }
-                gravity = 0;
+            if (checkCollide(casperX + 100, casperY + 50, collisionObjects[i])) {
                 casper.speed = 0;
-
-                return;
-            }
-            if (objectName === 'spring') {
-                casper.image.setY(collisionObjects[i].getY() - 15);
-            }
-            else if (objectName === 'flatButton') {
-                collisionObjects[i].setHeight(25);
-                collisionObjects[i].setY(200);
-
-                if (!isFlatButtonPressed) {
-                    var rotatedBeam = collisionObjects[i].getAttr('rotaryBeam');
-                    rotatedBeam.rotateBeam();
-                    isFlatButtonPressed = true;
-                }
-            }
-
-            else if (objectName === 'line') {
-                lineFlag = true;
-                var spd = collisionObjects[i].getAttr('rspeed');
-                casper.image.setY(collisionObjects[i].getY() - 85);
-                if (collisionObjects[i].animation() === 'workingLine') {
-                    casper.speed = -spd;
+                if (collisionObjects[i].getName() == 'rightTube') {
+                    levelOver();
 
                 }
+                if (casper) {
+                    casper.image.setX(collisionObjects[i].getX() - 100);
+                }
+                inCollision.push(collisionObjects[i]);
+
+            } else {
+                if (casper.direction !== 'die') {
+                    if (casper.speed <= 2) {
+                        casper.speed += 0.03;
+                    }
+                }
+
             }
 
-            else {
-                casper.image.setY(collisionObjects[i].getY() - 100);
+            if (checkCollide(casperX + 50, casperY + 100, collisionObjects[i])) {
+                var objectName = collisionObjects[i].getName();
+                if (collisionObjects[i].getAttr('casperEnemy')) {
+                    if (casper.image.animation() !== 'dead') {
+                        casper.move('die');
+                    }
+                    gravity = 0;
+                    casper.speed = 0;
 
-            }
+                    return;
+                }
+                if (objectName === 'spring') {
+                    casper.image.setY(collisionObjects[i].getY() - 15);
+                } else if (objectName === 'flatButton') {
+                    collisionObjects[i].setHeight(25);
+                    collisionObjects[i].setY(200);
 
-            gravity = 0;
+                    if (!isFlatButtonPressed) {
+                        var rotatedBeam = collisionObjects[i].getAttr('rotaryBeam');
+                        rotatedBeam.rotateBeam();
+                        isFlatButtonPressed = true;
+                    }
+                } else if (objectName === 'line') {
+                    lineFlag = true;
+                    var spd = collisionObjects[i].getAttr('rspeed');
+                    casper.image.setY(collisionObjects[i].getY() - 85);
+                    if (collisionObjects[i].animation() === 'workingLine') {
+                        casper.speed = -spd;
 
-            inCollision.push(collisionObjects[i]);
-        } else {
-            if (casper.direction !== 'die') {
-                gravity = 2;
+                    }
+                } else {
+                    casper.image.setY(collisionObjects[i].getY() - 100);
+
+                }
+
+                gravity = 0;
+
+                inCollision.push(collisionObjects[i]);
+            } else {
+                if (casper.direction !== 'die') {
+                    gravity = 2;
+                }
             }
         }
     }
-    casper.inCollision = inCollision;
+    if (casper) {
+        casper.inCollision = inCollision;
+    }
+    
 
 }
 
@@ -241,7 +278,7 @@ function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one 
     var oRight = oLeft + object.getWidth();
 
     if (object.getName() === 'rightTube') {
-        oLeft = oLeft + 70;
+        oLeft = oLeft + 40;
     }
 
     if (object.getName() === 'spring') {

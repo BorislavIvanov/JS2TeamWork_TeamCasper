@@ -1,6 +1,8 @@
 ﻿var levels = [
     //Level 1 Objects
     {
+        casperX: 0,
+        casperY: 327,
         background: 'backgroundLavel1Night.png',
         initialScore: 300500,
         scriptsToLoad: ['CasperObject.js', 'button.js', 'spring.js'],
@@ -40,7 +42,7 @@
                 x: 215,
                 y: 250,
                 beam:
-                    { name: 'beam', x: 240, y:7 }
+                    { name: 'beam', x: 240, y: 7 }
             },
            /* {
                 name: 'translationBeam',
@@ -51,6 +53,8 @@
     },
     //Level 2 Objects
     {
+        casperX: 0,
+        casperY: 132,
         background: 'backgroundLavel2Night.png',
         initialScore: 300500,
         scriptsToLoad: ['CasperObject.js', 'flatButton.js', 'AssemblyLine.js', 'ControlLever.js', 'rotaryBeam.js'],
