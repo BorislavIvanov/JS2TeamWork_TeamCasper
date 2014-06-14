@@ -5,7 +5,7 @@ var rotatedBeam;
 var scoreBox;
 var initialScore;
 var playerScore;
-var overallScore;
+var overallScore = 0;
 var rightTube;
 var currentLevel;
 
@@ -40,6 +40,7 @@ function scoreInput() {
             saveToScoreBoard(currentData);
             inputForm.parentNode.removeChild(inputForm);
             label.parentNode.removeChild(label);
+            playerScores(JSON.parse(localStorage.getItem('CasperScoreBoard')).scores);
             //stage = new Kinetic.Stage({
             //    container: 'canvas-container',
             //    width: 800,
@@ -102,7 +103,7 @@ function gameOver() {
     casper.image.stop();
     casper.move('idle');
     scoreInput();
-	playerScores();
+	
 }
 
 function createCountDown(timeRemaining) {
@@ -171,7 +172,7 @@ function levelOver() {
     };
 
 
-    overallScore += playerScore;
+    overallScore += parseInt(scoreBox.getAttr('text'));
     if (currentLevel >= levels.length) {
         gameOver();
         return;

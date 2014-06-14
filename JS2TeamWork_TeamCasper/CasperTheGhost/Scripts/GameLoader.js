@@ -14,7 +14,8 @@ function loadLevel(levelNumber) {
     $.getScript('Scripts/CasperObject.js',
         function () {
             var caserLayer = new Kinetic.Layer();
-            casper = Casper(100, 100, caserLayer, stage);
+            casper = Casper(level.casperX, level.casperY, caserLayer, stage);
+            casper.move('right');
         }
     );
     loadBackground(level.background);
