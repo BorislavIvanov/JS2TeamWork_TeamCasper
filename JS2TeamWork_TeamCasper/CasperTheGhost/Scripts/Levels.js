@@ -4,7 +4,7 @@
         casperX: 0,
         casperY: 327,
         background: 'backgroundLavel1Night.png',
-        initialScore: 300500,
+        initialScore: 200500,
         scriptsToLoad: ['CasperObject.js', 'button.js', 'spring.js'],
         collisionObjects: [
             {
