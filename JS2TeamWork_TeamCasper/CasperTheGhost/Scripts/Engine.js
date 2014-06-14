@@ -49,6 +49,52 @@ function scoreInput() {
     });
 }
 
+function playerScores(totalScores) {
+
+    //var totalScores = [
+    //    { name: "1", score: 20 },
+    //    { name: "2", score: 10 },
+    //    { name: "3", score: 10 },
+    //    { name: "4", score: 10 },
+    //    { name: "5", score: 10 },
+    //    { name: "6", score: 10 },
+    //    { name: "7", score: 10 },
+    //    { name: "8", score: 10 },
+    //    { name: "9", score: 10 },
+    //    { name: "10", score: 10 },
+    //    { name: "11", score: 10 },
+    //    { name: "12", score: 10 },
+    //    { name: "13", score: 10 }];
+
+    var scoreTable = Raphael(200, 100, 400, 400); // new Paper
+
+    var background = scoreTable.rect(0, 0, 400, 500);
+    background.attr({
+        fill: "rgba(0, 0, 0, 0.7)",
+        stroke: "#fff"
+    });
+
+    var scoreLabel = scoreTable.text(210, 30, 'Players Scores :)');
+    scoreLabel.attr({
+        fill: "#fff",
+        stroke: "#fff",
+        "font-size": 40,
+        "font-family": "Georgia"
+    });
+
+    var playerTextY = 110;
+
+    for (var i = 0; i < 6; i++) {
+        scoreTable.text(210, playerTextY, (i + 1) + ")"+ "Name: " + totalScores[i].name + ", Scores:" + totalScores[i].score).attr({
+            fill: "#0f0",
+            "font-size": 30,
+            "font-family": "Georgia"
+        });
+
+        playerTextY += 40;
+    }
+}
+
 function gameOver() {
     
     
@@ -56,6 +102,7 @@ function gameOver() {
     casper.image.stop();
     casper.move('idle');
     scoreInput();
+	playerScores();
 }
 
 function createCountDown(timeRemaining) {
