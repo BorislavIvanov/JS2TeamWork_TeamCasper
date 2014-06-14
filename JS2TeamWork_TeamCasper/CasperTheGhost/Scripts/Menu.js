@@ -125,24 +125,8 @@ function gameEnd() {
 
     endButton.click(function (evt) {
         endButton.hide();
-        displayScores();
+//        playerScores(totalScores);
     });
-}
-
-function displayScores() {
-    /* Current scores display */
-    var currentTimeRemaining = createCountDown(level.initialScore);
-    var timeShape = paper.rect(30, 8, 88, 40, 5, 8).attr({ fill: "yellowgreen"});
-    var timeShapeText = paper.text(74, 28, 'TIME:');
-    timeShapeText.attr({ "font-family": "Comic Sans MS", "font-size": 24, "font-weight": "800", fill: "cyan", stroke: "blue", "stroke-width": "2px" });
-
-
-    
- //   var timeText = paper.text(210, 8, 'alabala');
- //   timeText.attr({ "font-family": "Consolas", "font-size": 24, "font-weight": "800", fill: "red", stroke: "brown", "stroke-width": "2px" });
-
-
-
 }
 
 
