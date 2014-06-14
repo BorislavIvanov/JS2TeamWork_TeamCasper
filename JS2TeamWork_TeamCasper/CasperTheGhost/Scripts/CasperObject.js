@@ -117,6 +117,15 @@ function Casper(x, y, layer, stage) {
                     blob.animation(casper.direction);
                 }
             }, false);
+
+            blob.on('click', function () {
+                if (casper.direction == 'right') {
+                    casper.move('idle');
+                } else {
+                    casper.move('right');
+                }
+                
+            });
             return blob;
         })(x, y),
         move: function (newDirection) {

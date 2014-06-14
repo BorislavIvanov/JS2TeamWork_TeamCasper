@@ -50,7 +50,7 @@ function objectsBiulder(object, objLeyer) {
                 width: object.width,
                 height: object.height,
                 //fill: 'transparent'
-                fill: 'orange'
+                fill: 'transparent'
             });
             objLeyer.add(rect);
             collisionObjects.push(rect);
