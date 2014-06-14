@@ -28,7 +28,7 @@ function loadLevel(levelNumber) {
     initialScore = createCountDown(level.initialScore);
     $.getScript('Scripts/printScore.js',
         function () {
-            scoreBox = new scoreBox(45, 480, Math.floor(initialScore() / 1000), objLayer, stage);
+            scoreBox = new scoreBox(45, 555, Math.floor(initialScore() / 1000), objLayer, stage);
         }
     );
 }
