@@ -1,4 +1,5 @@
 ﻿/// <reference path="GameLoader.js" />
+/// <reference path="CasperObject.js" />
 
 function initGame() {
     var paper;
@@ -6,8 +7,8 @@ function initGame() {
 
     /* start page */
     paper.setStart();
-    var pageFill = paper.rect(8, 8, 800, 600).attr({ fill: "rgb(225, 226, 227)" }).attr({ stroke: 'none' });
-    var pageBg = paper.image("../Resources/backgroundLevelW.png", 8, 8, 800, 600).attr({ opacity: 0.4 });
+    var pageFill = paper.rect(0,0, 800, 600).attr({ fill: "rgb(225, 226, 227)" }).attr({ stroke: 'none' });
+    var pageBg = paper.image("../Resources/backgroundLevelW.png", 0,0, 800, 600).attr({ opacity: 0.4 });
     var titleImage = paper.image("Resources/CasperTitle.png", 250, 125, 300, 90);
 
     var titleAnimaton = function () {
@@ -87,7 +88,16 @@ function playGame(levelNumber) {
             levelText.attr({ text: 'GO LEVEL2' });
         }
         currentLevel = newLevelNumber;
+
+        stage = new Kinetic.Stage({
+            container: 'canvas-container',
+            width: 800,
+            height: 600
+        });
+
         loadLevel(newLevelNumber);
+
+        casper.inCollision.splice(0, inCollision.length-1); 
     });
 
     /* Game End button */
@@ -116,19 +126,4 @@ function playGame(levelNumber) {
 
     });
 }
-
-
-/*  F U N C T I O N S   */
-
-
-    
-/*    playButton.hide();
-
-     stage = new Kinetic.Stage({
-         container: 'canvas-container',
-         width: 800,
-         height: 600
-     });
-    
-*/
 
