@@ -43,7 +43,7 @@ function scoreInput() {
             //    height: 600
             //});
         }
-    })
+    });
 }
 
 function gameOver() {
@@ -53,8 +53,8 @@ function gameOver() {
 function createCountDown(timeRemaining) {
     var startTime = Date.now();
     return function () {
-        return ((timeRemaining - (Date.now() - startTime))>0)?((timeRemaining - (Date.now() - startTime))):0;
-    }
+        return ((timeRemaining - (Date.now() - startTime)) > 0) ? ((timeRemaining - (Date.now() - startTime))) : 0;
+    };
 }
 
 function jump(time) {
@@ -193,6 +193,9 @@ function checkCollide(pointX, pointY, object) { // pointX, pointY belong to one 
     var oLeft = object.getX();
     var oRight = oLeft + object.getWidth();
 
+    if (object.getName() === 'rightTube') {
+        oLeft = oLeft + 70;
+    }
 
     if (object.getName() === 'spring') {
         oTop = oTop + 122 - object.getHeight();

@@ -6,6 +6,7 @@
 
 
 function loadLevel(levelNumber) {
+    clearLevel();
     var level = levels[levelNumber - 1]; //from Levels.js
     assebliesLoad(level.scriptsToLoad);
 
@@ -29,7 +30,6 @@ function loadLevel(levelNumber) {
         }
     );
 }
-
 
 function assebliesLoad(jsFilesToAddInDOM) {
     for (var assemblyIndex = 0; assemblyIndex < jsFilesToAddInDOM.length; assemblyIndex++) {
@@ -117,6 +117,7 @@ function objectsBiulder(object, objLeyer) {
             var imageObj = new Image();
             imageObj.onload = function () {
                 rightTube = new Kinetic.Image({
+                    name: 'rightTube',
                     x: object.x,
                     y: object.y,
                     width: object.width,
@@ -173,6 +174,24 @@ function objectsBiulder(object, objLeyer) {
         default:
             break;
     }
+}
+
+function clearLevel() {
+    if (casper) {
+        casper.image.off('frameIndexChange');
+    }
+    casper = undefined;
+    collisionObjects = [];
+    for (var i = 0; i < stage.children.length; i++) {
+        stage.children[i].destroyChildren();
+    }
+    stage.destroyChildren();
+    stage = new Kinetic.Stage({
+        container: 'canvas-container',
+        width: 800,
+        height: 600
+    });
+    
 }
 
 
