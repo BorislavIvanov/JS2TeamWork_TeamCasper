@@ -97,7 +97,7 @@ function playGame(levelNumber) {
 
         loadLevel(newLevelNumber);
 
-        casper.inCollision.splice(0, inCollision.length - 1);
+        //casper.inCollision.splice(0, inCollision.length - 1);
     });
 
 }
