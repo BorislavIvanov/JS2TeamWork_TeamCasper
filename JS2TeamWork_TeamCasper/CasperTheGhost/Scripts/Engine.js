@@ -10,7 +10,7 @@ var rightTube;
 var currentLevel;
 
 
-/*  function scoreInput() {
+    function scoreInput() {
     var inputForm = document.createElement('input');
     var label = document.createElement('label');
     label.style.position = 'absolute';
@@ -48,12 +48,10 @@ var currentLevel;
             //});
         }
     });
-}  // for later update */
+} 
 
 function playerScores(totalScores) {
-
-    //var totalScores = [
-    var totalScores = [
+/*    var totalScores = [
         { name: "1", score: 498 },
         { name: "2", score: 486 },
         { name: "3", score: 423 },
@@ -66,6 +64,7 @@ function playerScores(totalScores) {
         { name: "10", score: 54 },
         { name: "11", score: 46 },
         { name: "12", score: 27 }];
+        */
 
     var scoreTable = Raphael(200, 100, 400, 400); // new Paper
 
