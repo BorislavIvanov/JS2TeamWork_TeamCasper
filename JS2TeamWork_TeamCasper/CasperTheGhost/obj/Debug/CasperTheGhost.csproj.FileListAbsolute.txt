@@ -4,3 +4,8 @@ D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\Casper
 D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.dll
 D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.pdb
 D:\Projects\Public Projects\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.csprojResolveAssemblyReference.cache
+D:\#Telerik#\#GitHub Directory#\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\bin\CasperTheGhost.dll
+D:\#Telerik#\#GitHub Directory#\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\bin\CasperTheGhost.pdb
+D:\#Telerik#\#GitHub Directory#\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.csprojResolveAssemblyReference.cache
+D:\#Telerik#\#GitHub Directory#\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.dll
+D:\#Telerik#\#GitHub Directory#\JS2TeamWork_TeamCasper\JS2TeamWork_TeamCasper\CasperTheGhost\obj\Debug\CasperTheGhost.pdb
