@@ -35,11 +35,12 @@ function scoreInput() {
         if (ev.keyCode === 13) {
             var currentData = {
                 name: inputForm.value,
-                score: scoreBox.getAttr('text')
-            }
-            saveToScoreBoard(currentData)
+                score: overallScore
+            };
+            saveToScoreBoard(currentData);
             inputForm.parentNode.removeChild(inputForm);
             label.parentNode.removeChild(label);
+            playerScores(JSON.parse(localStorage.getItem('CasperScoreBoard')).scores);
             //stage = new Kinetic.Stage({
             //    container: 'canvas-container',
             //    width: 800,
@@ -50,21 +51,20 @@ function scoreInput() {
 }
 
 function playerScores(totalScores) {
-
-    //var totalScores = [
-    //    { name: "1", score: 20 },
-    //    { name: "2", score: 10 },
-    //    { name: "3", score: 10 },
-    //    { name: "4", score: 10 },
-    //    { name: "5", score: 10 },
-    //    { name: "6", score: 10 },
-    //    { name: "7", score: 10 },
-    //    { name: "8", score: 10 },
-    //    { name: "9", score: 10 },
-    //    { name: "10", score: 10 },
-    //    { name: "11", score: 10 },
-    //    { name: "12", score: 10 },
-    //    { name: "13", score: 10 }];
+    /*    var totalScores = [
+            { name: "1", score: 498 },
+            { name: "2", score: 486 },
+            { name: "3", score: 423 },
+            { name: "4", score: 359 },
+            { name: "5", score: 314 },
+            { name: "6", score: 290 },
+            { name: "7", score: 110 },
+            { name: "8", score: 108 },
+            { name: "9", score: 96 },
+            { name: "10", score: 54 },
+            { name: "11", score: 46 },
+            { name: "12", score: 27 }];
+            */
 
     var scoreTable = Raphael(200, 100, 400, 400); // new Paper
 
@@ -96,13 +96,13 @@ function playerScores(totalScores) {
 }
 
 function gameOver() {
-    
-    
+
+
     casper.image.off('frameIndexChange');
     casper.image.stop();
     casper.move('idle');
     scoreInput();
-    playerScores();
+    //playerScores();
 }
 
 function createCountDown(timeRemaining) {
@@ -165,13 +165,13 @@ function outOfField(x, y) {
 }
 
 function levelOver() {
-    
+
     initialScore = function () {
-        return parseInt(scoreBox.getAttr('text')) * 1000;
+        return parseInt(scoreBox.getAttr('text').substring(7)) * 1000;
     };
 
 
-    overallScore += parseInt(scoreBox.getAttr('text'));
+    overallScore += parseInt(scoreBox.getAttr('text').substring(7));
     if (currentLevel >= levels.length) {
         gameOver();
         return;
@@ -189,9 +189,9 @@ function goBabyGo() {
         scoreBox.setAttr('text', currentScoreText);
     }
     var inCollision = [];
-    
+
     if (!casper) { return; }
-    
+
     var casperX = casper.image.getX();
     var casperY = casper.image.getY();
     outOfField(casperX, casperY);
@@ -268,7 +268,7 @@ function goBabyGo() {
     if (casper) {
         casper.inCollision = inCollision;
     }
-    
+
 
 }
 
