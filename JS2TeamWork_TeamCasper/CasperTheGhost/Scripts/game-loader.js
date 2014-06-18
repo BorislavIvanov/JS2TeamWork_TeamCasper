@@ -1,23 +1,16 @@
-﻿/// <reference path="spring.js" />
-/// <reference path="tubes.js" />
-/// <reference path="tubes.js" />
-/// <reference path="rotaryBeam.js" />
-
-
-
-function loadLevel(levelNumber) {
+﻿function loadLevel(levelNumber) {
     clearLevel();
     var level = levels[levelNumber - 1]; //from Levels.js
     currentLevel = levelNumber;
-    assebliesLoad(level.scriptsToLoad);
 
-    $.getScript('Scripts/CasperObject.js',
+    $.getScript('Scripts/casper-object.js',
         function () {
             var caserLayer = new Kinetic.Layer();
-            casper = Casper(level.casperX, level.casperY, caserLayer, stage);
+            casper = new Casper(level.casperX, level.casperY, caserLayer, stage);
             casper.move('right');
         }
     );
+
     loadBackground(level.background);
     var objLayer = new Kinetic.Layer();
 
@@ -26,19 +19,30 @@ function loadLevel(levelNumber) {
     }
     stage.add(objLayer);
     initialScore = createCountDown(level.initialScore);
-    $.getScript('Scripts/printScore.js',
+    $.getScript('Scripts/print-score.js',
         function () {
             scoreBox = new scoreBox(45, 555, Math.floor(initialScore() / 1000), objLayer, stage);
         }
     );
 }
 
-function assebliesLoad(jsFilesToAddInDOM) {
-    for (var assemblyIndex = 0; assemblyIndex < jsFilesToAddInDOM.length; assemblyIndex++) {
-        var fileref = document.createElement('script');
-        fileref.setAttribute("src", 'Scripts/' + jsFilesToAddInDOM[assemblyIndex]);
-        document.getElementsByTagName("body")[0].appendChild(fileref);
-    }
+function loadBackground(image) {
+    var backgroundImage = new Image();
+    var bgrdlayer = new Kinetic.Layer();
+
+    backgroundImage.onload = function () {
+        var levelBackground = new Kinetic.Image({
+            x: 0,
+            y: 0,
+            width: stage.getWidth(),
+            height: stage.getHeight(),
+            image: backgroundImage
+        });
+        bgrdlayer.add(levelBackground);
+        stage.add(bgrdlayer);
+        bgrdlayer.setZIndex(0);
+    };
+    backgroundImage.src = 'Resources/' + image;
 }
 
 function objectsBiulder(object, objLeyer) {
@@ -49,12 +53,12 @@ function objectsBiulder(object, objLeyer) {
                 y: object.y,
                 width: object.width,
                 height: object.height,
-                //fill: 'transparent'
                 fill: 'transparent'
             });
             objLeyer.add(rect);
             collisionObjects.push(rect);
             break;
+            
         case 'spring':
             $.getScript('Scripts/spring.js',
                 function () {
@@ -66,32 +70,35 @@ function objectsBiulder(object, objLeyer) {
                     collisionObjects.push(ourSpringImage);
                 });
             break;
+            
         case 'controler':
-            $.getScript('Scripts/ControlLever.js',
+            $.getScript('Scripts/control-lever.js',
                 function () {
                     var thisControler = ControlLever(object.x, object.y, objLeyer, stage);
                     var ourControlerImage = thisControler.image;
-                    $.getScript('Scripts/AssemblyLine.js', function () {
+                    $.getScript('Scripts/assembly-line.js', function () {
                         var line = AssemblyLine(object.line.x, object.line.y, objLeyer, stage, 6, thisControler);
                         collisionObjects.push(line.image);
                     });
                     collisionObjects.push(ourControlerImage);
                 });
             break;
+            
         case 'spark':
-            $.getScript('Scripts/SampleCasperEnemy.js',
+            $.getScript('Scripts/spark.js',
                 function () {
-                    var ourSpark = new sampleCasperEnemy(object.x, object.y, object.width, object.height, objLeyer, stage);
+                    var ourSpark = new Spark(object.x, object.y, objLeyer, stage);
                     var ourSparkImage = ourSpark.image;
                     collisionObjects.push(ourSparkImage);
                 });
             break;
+            
         case 'rotaryBeam':
-            $.getScript('Scripts/rotaryBeam.js',
+            $.getScript('Scripts/rotary-beam.js',
                 function () {
-                    var rotaryBeam = new beamLevelTwo(object.x, object.y, objLeyer, stage);
+                    var rotaryBeam = new RotaryBeam(object.x, object.y, objLeyer, stage);
                     var rotaryBeamImage = rotaryBeam.image;
-                    $.getScript('Scripts/flatButton.js', function () {
+                    $.getScript('Scripts/flat-button.js', function () {
                         var ourFlatButton = flatButton(object.flatButton.x, object.flatButton.y, objLeyer, stage, rotaryBeam, false);
                         var ourFlatButtonImage = ourFlatButton.image;
                         collisionObjects.push(ourFlatButtonImage);
@@ -99,25 +106,26 @@ function objectsBiulder(object, objLeyer) {
                     collisionObjects.push(rotaryBeamImage);
                 });
             break;
+            
         case 'leftTube':
             var imageObj = new Image();
-            imageObj.onload = function () {
+            imageObj.onload = function() {
                 var leftTube = new Kinetic.Image({
                     x: object.x,
                     y: object.y,
                     width: object.width,
                     heigth: 50,
                     image: imageObj
-                })
+                });
                 objLeyer.add(leftTube);
                 stage.add(objLeyer);
-                //collisionObjects.push(leftTube);
-            }
+            };
             imageObj.src = 'Resources/tubeLevel1Left.png';
             break;
+            
         case 'rightTube':
             var imageObj = new Image();
-            imageObj.onload = function () {
+            imageObj.onload = function() {
                 rightTube = new Kinetic.Image({
                     name: 'rightTube',
                     x: object.x,
@@ -125,52 +133,40 @@ function objectsBiulder(object, objLeyer) {
                     width: object.width,
                     heigth: 50,
                     image: imageObj
-                })
+                });
                 objLeyer.add(rightTube);
                 collisionObjects.push(rightTube);
                 stage.add(objLeyer);
-            }
+            };
             imageObj.src = 'Resources/tubeLevel1Right.png';
             break;
+            
         case 'korpus':
             var imageObj = new Image();
-            imageObj.onload = function () {
+            imageObj.onload = function() {
                 var korpus = new Kinetic.Image({
                     x: object.x,
                     y: object.y,
                     width: 50,
                     height: 27,
                     image: imageObj
-                })
+                });
                 objLeyer.add(korpus);
                 stage.add(objLeyer);
-            }
+            };
             imageObj.src = 'Resources/korpus.png';
             break;
-            /*case 'translationBeam':
-                $.getScript('Scripts/translationBeam.js',
-                    function () {
-                        var rotaryBeam = new beamLevelTwo(object.x, object.y, objLeyer, stage);
-                        var rotaryBeamImage = rotaryBeam.image;
-                        $.getScript('Scripts/ControlLever.js', function () {
-                            var ourControlLever = ControlLever(object.flatButton.x, object.flatButton.y, objLeyer, stage, rotaryBeam, false);
-                            var ourControlLeverImage = ourControlLever.image;
-                            collisionObjects.push(ourControlLeverImage);
-                        });
-                        collisionObjects.push(rotaryBeamImage);
-                    });
-                break;*/
+           
         case 'controlerLevel1':
-            $.getScript('Scripts/ControlLever.js',
+            $.getScript('Scripts/control-lever.js',
                 function () {
                     var thisControler = ControlLever(object.x, object.y, objLeyer, stage);
                     var ourControlerImage = thisControler.image;
-                    $.getScript('Scripts/translationBeam.js', function () {
-                        var beam = beamLevelOne(object.beam.x, object.beam.y, objLeyer, stage, ourControlerImage);
+                    $.getScript('Scripts/translation-beam.js', function () {
+                        var beam = TranslationBeam(object.beam.x, object.beam.y, objLeyer, stage, ourControlerImage);
                         collisionObjects.push(beam.image);
                     });
-                    ourControlerImage.rotate(180)
-                    //collisionObjects.push(beamLevelOne);
+                    ourControlerImage.rotate(180);
                 });
             break;
         default:
@@ -193,7 +189,6 @@ function clearLevel() {
         width: 800,
         height: 600
     });
-    
 }
 
 

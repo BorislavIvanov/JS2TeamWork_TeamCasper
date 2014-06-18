@@ -5,7 +5,6 @@
         casperY: 327,
         background: 'backgroundLavel1Night.png',
         initialScore: 200500,
-        scriptsToLoad: ['CasperObject.js', 'button.js', 'spring.js'],
         collisionObjects: [
             {
                 name: 'spring',
@@ -20,7 +19,7 @@
                 name: 'leftTube',
                 x: 0,
                 y: 327,
-                width: 83,
+                width: 83
             },
             {
                 name: 'rightTube',
@@ -35,7 +34,7 @@
             {
                 name: 'korpus',
                 x: 223,
-                y: 0,
+                y: 0
             },
             {
                 name: 'controlerLevel1',
@@ -43,13 +42,8 @@
                 y: 250,
                 beam:
                     { name: 'beam', x: 240, y: 7 }
-            },
-           /* {
-                name: 'translationBeam',
-                x: 232,
-                y: -64,
-            },*/
-        ],
+            }
+        ]
     },
     //Level 2 Objects
     {
@@ -57,7 +51,6 @@
         casperY: 132,
         background: 'backgroundLavel2Night.png',
         initialScore: 300500,
-        scriptsToLoad: ['CasperObject.js', 'flatButton.js', 'AssemblyLine.js', 'ControlLever.js', 'rotaryBeam.js'],
         collisionObjects: [
             {
                 name: 'controler',
@@ -70,12 +63,12 @@
                 name: 'rotaryBeam',
                 x: 580,
                 y: 220,
-                flatButton: { name: 'flatButton', x: 200, y: 181, },
+                flatButton: { name: 'flatButton', x: 200, y: 181 }
             },
             {
                 name: 'spark',
                 x: 423,
-                y: 259,
+                y: 259
             },
             {
                 name: 'leftTube',
@@ -87,12 +80,12 @@
                 name: 'rightTube',
                 x: 700,
                 y: 430,
-                width: 100,
+                width: 100
             },
             { name: 'rect', x: 0, y: 220, width: 425, height: 20 },
             { name: 'rect', x: 560, y: 220, width: 47, height: 20 },
             { name: 'rect', x: 690, y: 220, width: 110, height: 20 },
             { name: 'rect', x: 0, y: 520, width: 820, height: 20 }
-        ],
+        ]
     }
-]
+];

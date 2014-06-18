@@ -7,7 +7,7 @@
         fontFamily: 'Calibri',
         fill: 'red',
         width: 380,
-    })
+    });
     layer.add(scoreBox);
     stage.add(layer);
     return scoreBox;

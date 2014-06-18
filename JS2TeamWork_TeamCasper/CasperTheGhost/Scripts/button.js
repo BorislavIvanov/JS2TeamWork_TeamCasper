@@ -2,29 +2,26 @@
     var button = {
         posX: x,
         posY: y,
-        getImage: function () {
+        image: (function() {
             var imageObj = new Image();
-            imageObj.onload = function () {
+            imageObj.onload = function() {
                 var innerImage = new Kinetic.Image({
                     x: button.posX,
                     y: button.posY,
-                    image: imageObj,
+                    image: imageObj
                 });
-                checkForEvents(innerImage)
+                checkForEvents(innerImage);
                 layer.add(innerImage);
                 stage.add(layer);
-            }
+            };
 
-            imageObj.src = '../resources/button.png';
+            imageObj.src = 'Resources/button.png';
 
             function checkForEvents(buttonImage) {
-                buttonImage.on('mousedown', function (evt) {
+                buttonImage.on('mousedown', function() {
 
-                    imageObj.src = '../resources/button-mousedown.png';
+                    imageObj.src = 'Resources/button-mousedown.png';
                     var onSpring;
-                    //for (var i = 0; i < s.inCollision.length; i++) {
-                    //    console.log(s.inCollision[i].id);
-                    //}
                     for (var elementIndex in casper.inCollision) {
                         var collisionElement = casper.inCollision[elementIndex].getId();
                         if (collisionElement) {
@@ -37,26 +34,18 @@
                         jump(1200);
                     }
 
-                    setTimeout(function () { imageObj.src = '../resources/button-hover.png'; }, 100);
-                    //layer.removeChildren();
-                    //layer.add(buttonImage);
+                    setTimeout(function() { imageObj.src = 'Resources/button-hover.png'; }, 100);
                     spring.image.animation('stretch');
-
-
-
-
-                    //spring.getImage().start();
                 });
-                buttonImage.on('mouseover', function (evt) {
-                    imageObj.src = '../resources/button-hover.png';
+                buttonImage.on('mouseover', function() {
+                    imageObj.src = 'Resources/button-hover.png';
                 });
-                buttonImage.on('mouseout', function (evt) {
-                    imageObj.src = '../resources/button.png';
+                buttonImage.on('mouseout', function() {
+                    imageObj.src = 'Resources/button.png';
                 });
             }
-            //return innerImage;
-        }
-    }
-    button.getImage();
+        })()
+    };
+
     return button;
 }

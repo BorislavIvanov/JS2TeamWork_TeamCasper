@@ -8,28 +8,12 @@
         <script src="Scripts/jquery-1.11.1.min.js"></script>
         <script src="Scripts/kinetic-v5.1.0.min.js"></script>
         <script src="Scripts/raphael-min.js"></script>
-        <script src="Scripts/Levels.js"></script>
-        <script src="Scripts/Engine.js"></script>
-        <script src="Scripts/Menu.js"></script>
-        <script src="Scripts/GameLoader.js"></script>
+        <script src="Scripts/levels.js"></script>
+        <script src="Scripts/engine.js"></script>
+        <script src="Scripts/menu.js"></script>
+        <script src="Scripts/game-loader.js"></script>
         <script>
-            var stage = new Kinetic.Stage({
-                container: 'canvas-container',
-                width: 800,
-                height: 600
-            });
-            
             initGame();
-            var paper = Raphael(0, 550, 800, 58);
-            playGame(1);
-            gameEnd();
         </script>
-        
-        <!--<button onclick=" casper.move('idle')">stay</button>
-        <button onclick=" casper.move('left')">left</button>
-        <button onclick=" casper.move('right')">right</button>
-        <button onclick=" casper.move('die')">Die</button>
-        <button onclick=" casper.move('dead')">right</button>
-        <button onclick="(function(){casper.speed=-5})()">Reverse turbo</button>-->
     </body>
 </html>

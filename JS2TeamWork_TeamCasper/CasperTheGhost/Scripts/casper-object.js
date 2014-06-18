@@ -14,8 +14,8 @@ function Casper(x, y, layer, stage) {
         multiplyer: -1,
         image: (function (x, y) {
             var imageObj = new Image();
-            imageObj.src = "../resources/GhostSprites.png";
-            var blob = new Kinetic.Sprite({
+            imageObj.src = "Resources/GhostSprites.png";
+            var casperImage = new Kinetic.Sprite({
                 x: x,
                 y: y,
                 image: imageObj,
@@ -86,27 +86,27 @@ function Casper(x, y, layer, stage) {
                 frameRate: 12,
                 frameIndex: 0
             });
-            layer.add(blob);
+            layer.add(casperImage);
             stage.add(layer);
             layer.setZIndex(1);
-            blob.start();
+            casperImage.start();
 
             var frameCounter = 0;
 
-            var anim = new Kinetic.Animation(function (frame) {
-                blob.setX(blob.getX() + (casper.speed * casper.multi));
-                blob.setY(blob.getY() + gravity);
-                goBabyGo();
+            var anim = new Kinetic.Animation(function () {
+                casperImage.setX(casperImage.getX() + (casper.speed * casper.multi));
+                casperImage.setY(casperImage.getY() + gravity);
+                mainGameEngine();
             }, layer);
             anim.start();
 
-            blob.on('frameIndexChange', function (evt) {
-                if (blob.animation() === 'die') {
+            casperImage.on('frameIndexChange', function () {
+                if (casperImage.animation() === 'die') {
                     casper.animationChange = false;
                     if (++frameCounter > 12) {
-                        blob.animation('dead');
+                        casperImage.animation('dead');
                         frameCounter = 0;
-                        blob.stop();
+                        casperImage.stop();
                         anim.stop();
                         gameOver();
                     }
@@ -114,11 +114,11 @@ function Casper(x, y, layer, stage) {
 
                 if (casper.animationChange) {
                     casper.animationChange = false;
-                    blob.animation(casper.direction);
+                    casperImage.animation(casper.direction);
                 }
             }, false);
 
-            blob.on('click', function () {
+            casperImage.on('click', function () {
                 if (casper.direction == 'right') {
                     casper.move('idle');
                 } else {
@@ -126,7 +126,7 @@ function Casper(x, y, layer, stage) {
                 }
                 
             });
-            return blob;
+            return casperImage;
         })(x, y),
         move: function (newDirection) {
 

@@ -9,7 +9,7 @@ function ControlLever(x, y, layer, stage) {
         isWorking: false,
         image: (function (pX, pY) {
             var leverImage = new Image();
-            leverImage.src = '/Resources/ControlLever.png';
+            leverImage.src = 'Resources/ControlLever.png';
 
             var leverAnimation = new Kinetic.Sprite({
                 x: pX,
@@ -36,7 +36,7 @@ function ControlLever(x, y, layer, stage) {
                         144, 0, 48, 49,
                         95, 0, 48, 49,
                         47, 0, 48, 49,
-                        0, 0, 48, 49,
+                        0, 0, 48, 49
                     ]
                 },
                 frameRate: 10,
@@ -51,14 +51,13 @@ function ControlLever(x, y, layer, stage) {
 
             //On click animation
 
-            leverAnimation.on('frameIndexChange', function (evt) {
+            leverAnimation.on('frameIndexChange', function () {
                 if (leverAnimation.animation() === 'movingLeverON') {
                     if (++frameCount > 5) {
                         leverAnimation.animation('switchedOn');
                         frameCount = 0;
                     }
-                }
-                else if (leverAnimation.animation() === 'movingLeverOFF') {
+                } else if (leverAnimation.animation() === 'movingLeverOFF') {
                     if (++frameCount > 5) {
                         leverAnimation.animation('switchedOff');
                         frameCount = 0;
@@ -66,20 +65,19 @@ function ControlLever(x, y, layer, stage) {
                 }
             }, false);
 
-            leverAnimation.on('click', function (e) {
+            leverAnimation.on('click', function () {
                 if (!controlLever.isWorking) { //On click event for switching from OFF to ON
                     leverAnimation.animation('movingLeverON');
                     controlLever.isWorking = true;
-                }
-                else {
+                } else {
                     leverAnimation.animation('movingLeverOFF');
                     controlLever.isWorking = false;
                 }
-            })
+            });
 
             return leverAnimation;
         })(x, y)
-    }
+    };
 
     return controlLever;
 }

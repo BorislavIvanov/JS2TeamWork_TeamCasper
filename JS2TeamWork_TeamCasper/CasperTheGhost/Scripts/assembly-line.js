@@ -10,15 +10,14 @@ function AssemblyLine(x, y, layer, stage, speed, controler) {
         lineControler: controler,
         image: (function (x, y, speed, controler) {
             var lineImage = new Image();
-            lineImage.src = '/Resources/AssemblyLineSprite.png';
+            lineImage.src = 'Resources/AssemblyLineSprite.png';
 
             var lineAnimation = new Kinetic.Sprite({
                 x: x,
                 y: y,
                 width: 650,
                 height: 50,
-                rspeed: speed,
-                getSpeed: function () { return this.rspeed; },
+                speed: speed,
                 image: lineImage,
                 name: 'line',
                 animation: 'staticLine',
@@ -44,19 +43,17 @@ function AssemblyLine(x, y, layer, stage, speed, controler) {
             stage.add(layer);
             lineAnimation.start();
 
-            controler.image.on('click', function (e) {
+            controler.image.on('click', function () {
                 if (controler.isWorking === true) {
                     lineAnimation.animation('workingLine');
-                }
-                else {
+                } else {
                     lineAnimation.animation('staticLine');
                 }
-            })
+            });
 
             return lineAnimation;
         })(x, y, speed, controler)
-    }
+    };
 
-    //assemblyLine.image();
     return assemblyLine;
 }

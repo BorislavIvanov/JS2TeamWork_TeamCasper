@@ -2,13 +2,18 @@
 /// <reference path="CasperObject.js" />
 
 function initGame() {
-    var paper;
+    stage = new Kinetic.Stage({
+        container: 'canvas-container',
+        width: 800,
+        height: 600
+    });
+
     paper = Raphael(8, 8, 800, 600);
 
     /* start page */
     paper.setStart();
     var pageFill = paper.rect(0, 0, 800, 600).attr({ fill: "rgb(225, 226, 227)" }).attr({ stroke: 'none' });
-    var pageBg = paper.image("../Resources/backgroundLevelW.png", 0, 0, 800, 600).attr({ opacity: 0.4 });
+    var pageBg = paper.image("Resources/backgroundLevelW.png", 0, 0, 800, 600).attr({ opacity: 0.4 });
     var titleImage = paper.image("Resources/CasperTitle.png", 250, 125, 300, 90);
 
     var titleAnimaton = function () {
@@ -32,24 +37,28 @@ function initGame() {
     playButton.attr({ cursor: "pointer" });
 
     /* playButton - add hover/click handlers */
-    playButton.mouseover(function (evt) {
+    playButton.mouseover(function () {
         this.oGlow = playShape.glow({
             opacity: 0.85,
             color: 'lime',
             width: 70
         }); playShape.attr({ fill: "darkgreen" });
-    }).mouseout(function (evt) {
+    }).mouseout(function () {
         this.oGlow.remove(); playShape.attr({ fill: "90-#efe-#0d0:50-#6d8" });
     });
 
-    playButton.click(function (evt) {
+    playButton.click(function () {
         paper.remove();
         loadLevel(1);
+        paper = Raphael(0, 550, 800, 58);
+        createLevelButton(1);
     });
+
+    createEndButton(540);
 
 }
 
-function playGame(levelNumber) {
+function createLevelButton(levelNumber) {
     var currentLevel = levelNumber;
     var newLevelNumber = currentLevel;
 
@@ -68,17 +77,17 @@ function playGame(levelNumber) {
     levelButton.attr({ cursor: "pointer" });
 
     /* levelButton - add hover/click handlers */
-    levelButton.mouseover(function (evt) {
+    levelButton.mouseover(function () {
         this.oGlow = levelShape.glow({
             opacity: 0.85,
             color: 'cyan',
             width: 25
         }); levelShape.attr({ fill: "gray" });
-    }).mouseout(function (evt) {
+    }).mouseout(function () {
         this.oGlow.remove(); levelShape.attr({ fill: "90-#eee-#888:50-#444" });
     });
 
-    levelButton.click(function (event) {
+    levelButton.click(function () {
         this.oGlow.remove();
         if (currentLevel === 1) {
             newLevelNumber = 2;
@@ -98,12 +107,14 @@ function playGame(levelNumber) {
         loadLevel(newLevelNumber);
     });
 
+    // End Button
+    createEndButton(8);
 }
 
-function gameEnd() {
+function createEndButton(yOffset) {
     /* Game End button */
-    var endShape = paper.rect(642, 8, 96, 40, 27, 40).attr({ fill: "90-#fee-#d00:50-#d68", "stroke-width": 5, stroke: "brown" });
-    var endText = paper.text(690, 28, "END");
+    var endShape = paper.rect(642, yOffset, 96, 40, 27, 40).attr({ fill: "90-#fee-#d00:50-#d68", "stroke-width": 5, stroke: "brown" });
+    var endText = paper.text(690, yOffset+20, "END");
     endText.attr({ "font-family": "Comic Sans MS", "font-size": 28, "font-weight": "800", fill: "yellow", stroke: "brown", "stroke-width": "3px" });
     var endButton = paper.set();
     endButton.push(endShape);
@@ -111,19 +122,18 @@ function gameEnd() {
     endButton.attr({ cursor: "pointer" });
 
     //  endButton - add hover/click handlers
-    endButton.mouseover(function (evt) {
+    endButton.mouseover(function () {
         this.oGlow = endShape.glow({
             opacity: 0.85,
             color: 'magenta',
             width: 25
         }); endShape.attr({ fill: "purple" });
-    }).mouseout(function (evt) {
+    }).mouseout(function () {
         this.oGlow.remove(); endShape.attr({ fill: "90-#fee-#d00:50-#d68" });
     });
 
-    endButton.click(function (evt) {
+    endButton.click(function () {
         window.close();
-
     });
 }
 

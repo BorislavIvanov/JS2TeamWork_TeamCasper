@@ -57,14 +57,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AssemblyLineTest.html" />
-    <Content Include="casperTestPage.html" />
-    <Content Include="CasperTheGhost.html" />
     <Content Include="index.html" />
     <Content Include="Resources\AssemblyLineSprite.png" />
-    <Content Include="Resources\backgroundLavel1Day.png" />
     <Content Include="Resources\backgroundLavel1Night.png" />
+    <Content Include="Resources\backgroundLavel2Night.png" />
     <Content Include="Resources\backgroundLevelW.png" />
+    <Content Include="Resources\beamLevel1.png" />
+    <Content Include="Resources\beamLevel2.png" />
     <Content Include="Resources\button-hover.png" />
     <Content Include="Resources\button-mousedown.png" />
     <Content Include="Resources\button.png" />
@@ -72,21 +71,28 @@
     <Content Include="Resources\ControlLever.png" />
     <Content Include="Resources\flatButton.png" />
     <Content Include="Resources\GhostSprites.png" />
+    <Content Include="Resources\korpus.png" />
+    <Content Include="Resources\Sparks.png" />
     <Content Include="Resources\spring.png" />
-    <Content Include="Scripts\AssemblyLine.js" />
+    <Content Include="Resources\tubeLevel1Left.png" />
+    <Content Include="Resources\tubeLevel1Right.png" />
+    <Content Include="Scripts\assembly-line.js" />
     <Content Include="Scripts\button.js" />
-    <Content Include="Scripts\CasperObject.js" />
-    <Content Include="Scripts\ControlLever.js" />
+    <Content Include="Scripts\casper-object.js" />
+    <Content Include="Scripts\control-lever.js" />
     <Content Include="Scripts\Engine.js" />
-    <Content Include="Scripts\flatButton.js" />
-    <Content Include="Scripts\GameLoader.js" />
+    <Content Include="Scripts\flat-button.js" />
+    <Content Include="Scripts\game-loader.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
     <Content Include="Scripts\kinetic-v5.1.0.min.js" />
     <Content Include="Scripts\Levels.js" />
     <Content Include="Scripts\Menu.js" />
+    <Content Include="Scripts\print-score.js" />
     <Content Include="Scripts\raphael-min.js" />
+    <Content Include="Scripts\rotary-beam.js" />
+    <Content Include="Scripts\spark.js" />
     <Content Include="Scripts\spring.js" />
-    <Content Include="TestCollisions.html" />
+    <Content Include="Scripts\translation-beam.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
